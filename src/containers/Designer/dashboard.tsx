@@ -4,19 +4,9 @@ import {
   Card,
   CardHeader,
   CardBody,
-  IconButton,
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem,
-  Avatar,
-  Tooltip,
-  Progress,
 } from "@material-tailwind/react";
 import {
   ClockIcon,
-  CheckIcon,
-  EllipsisVerticalIcon,
   ArrowUpIcon,
 } from "@heroicons/react/24/outline";
 import { StatisticsCard } from "./widgets/cards/statistics-card";
@@ -24,7 +14,6 @@ import { StatisticsChart } from "./widgets/charts/statistics-chart";
 import {
   statisticsCardsData,
   statisticsChartsData,
-  projectsTableData,
   ordersOverviewData,
 } from "./data";
 import { Paper } from "@mui/material";
