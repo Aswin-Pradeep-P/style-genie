@@ -17,6 +17,11 @@ import { ReactComponent as NotificationIcon } from './notifications.svg';
 import { ReactComponent as UserImage } from './userImage.svg';
 import { ReactComponent as ArrowRightIcon } from './ArrowRightIcon.svg';
 
+import { ReactComponent as LoginStep1 } from './LoginStep1.svg';
+import { ReactComponent as LoginStep2 } from './LoginStep2.svg';
+import { ReactComponent as LoginStep3 } from './LoginStep3.svg';
+import { ReactComponent as ArrowForward } from './arrow-forward.svg';
+
 export {
   ErrorIcon,
   ErrorCloseIcon,
@@ -34,5 +39,9 @@ export {
   HomeIconActive,
   ExploreActive,
   ProfileActive,
-  ArrowRightIcon
+  ArrowRightIcon,
+  LoginStep1,
+  LoginStep2,
+  LoginStep3,
+  ArrowForward
 };

@@ -6,7 +6,10 @@ export enum ROUTES {
   FAQS = '/my-account/support/faqs/',
   CATEGORY = '/category',
   EXPLORE = '/explore',
-  PROFILE = '/profile/'
+  PROFILE = '/profile/',
+  DESIGNER_SIGNUP = '/designer-signup/',
+  DESIGNER_DASHBOARD = '/designer-dashboard/',
+  CAPTURE_IMAGE = 'capture-image',
 }
 
 export const PUBLIC_ROUTES_REDIRECT = [
