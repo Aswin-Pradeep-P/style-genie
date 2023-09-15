@@ -46,7 +46,6 @@ const params = {
             console.log(response);
             onSuccess(response)
           }).catch(() => {
-            debugger;
             onError();
           });
     }

@@ -43,7 +43,7 @@ const ImageCapture = () => {
       if (selectedStep === SelectedStep.FRONT_VIEW) {
         setSelectedStep(SelectedStep.SIDE_VIEW);
       } else {
-        uploadImage(imageData[selectedStep], (res: any) => {
+        uploadImage(imageData[SelectedStep.FRONT_VIEW], (res: any) => {
           navigator(ROUTES.MEASUREMENT, {state : {res}})
         }, () => {
           navigator(ROUTES.MEASUREMENT)

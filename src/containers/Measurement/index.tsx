@@ -2,6 +2,7 @@
 import { AppBar, Loader } from '@Components/index';
 import { ROUTES } from '@Constants/routes';
 import { Box, Button, TextField } from '@mui/material';
+import { current } from '@reduxjs/toolkit';
 import { uploadImageFile } from '@Utils/s3Service';
 import { useState, useRef } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
@@ -13,7 +14,7 @@ enum BodyParts {
   Chest = 'Chest',
   Sleeves = 'Sleeves',
   Stomach = 'Stomach',
-  Waist = 'Waist',
+  Hip = 'Hip',
   Thighs = 'Thighs',
   Knee = 'Knee',
 }
@@ -24,19 +25,37 @@ const Measurement = () => {
   const [isLoading, setIsLoading] = useState(false);
   console.log(state);
   const [dimensions, setDimensions] = useState({
-    [BodyParts.Neck]: null,
-    [BodyParts.Shoulder]: null,
-    [BodyParts.Chest]: null,
-    [BodyParts.Stomach]: null,
-    [BodyParts.Waist]: null,
-    [BodyParts.Thighs]: null,
-    [BodyParts.Knee]: null
+    [BodyParts.Neck]: '',
+    [BodyParts.Shoulder]: '',
+    [BodyParts.Chest]: '',
+    [BodyParts.Stomach]: '',
+    [BodyParts.Hip]: '',
+    [BodyParts.Thighs]: '',
+    [BodyParts.Knee]: ''
   });
 
   const handleChange = (e: any, type: BodyParts) => {
     setDimensions({ ...dimensions, [type]: e.target.value });
     console.log(dimensions);
   };
+
+  const mapper = {
+    chestSize: [BodyParts.Chest],
+    shoulder: [BodyParts.Shoulder],
+    hipSize: [BodyParts.Hip]
+  }
+
+  const setDimensionFromApi= (res: any) => {
+    if(res?.data?.measurement){
+      const newObj = Object.keys(res.data.measurement).reduce((acc, current) => {
+        if(mapper[current]){
+          return {...acc, [mapper[current]]: res?.data?.measurement[current].toFixed(2)}
+        }
+        return acc;
+      }, {})
+      setDimensions((current) => ({...current, ...newObj}))
+    }
+  }
 
   const handleFileChange = event => {
     const fileObj = event.target.files && event.target.files[0];
@@ -45,7 +64,10 @@ const Measurement = () => {
     }
 
     setIsLoading(true);
-    uploadImageFile(fileObj, () => { setIsLoading(false)}, () => { setIsLoading(false) })
+    uploadImageFile(fileObj, (res) => { 
+      setDimensionFromApi(res);
+      setIsLoading(false)
+    }, () => { setIsLoading(false) })
   }
 
   const handleFileClick = () => {
@@ -57,7 +79,7 @@ const Measurement = () => {
     <Box sx={[styles.root]}>
       <AppBar />
       <div>Measurement</div>
-      <Loader isLoading={true}  />
+      {isLoading && <Loader />}
       <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
         <div style={{ position: 'absolute', top: 111, left: 96 }}>
           <TextField
@@ -67,6 +89,7 @@ const Measurement = () => {
             style={{ width: 70 }}
             label={BodyParts.Shoulder}
             value={dimensions[BodyParts.Shoulder]}
+            focused={dimensions[BodyParts.Shoulder]}
           />
         </div>
         <div style={{ position: 'absolute', top: 83, left: 266 }}>
@@ -77,6 +100,7 @@ const Measurement = () => {
             style={{ width: 70 }}
             label={BodyParts.Neck}
             value={dimensions[BodyParts.Neck]}
+            focused={dimensions[BodyParts.Neck]}
           />
         </div>
         <div style={{ position: 'absolute', top: 155, left: 96 }}>
@@ -87,6 +111,7 @@ const Measurement = () => {
             style={{ width: 70 }}
             label={BodyParts.Chest}
             value={dimensions[BodyParts.Chest]}
+            focused={dimensions[BodyParts.Chest]}
           />
         </div>
         <div style={{ position: 'absolute', top: 210, left: 64 }}>
@@ -97,6 +122,7 @@ const Measurement = () => {
             style={{ width: 70 }}
             label={BodyParts.Sleeves}
             value={dimensions[BodyParts.Sleeves]}
+            focused={dimensions[BodyParts.Sleeves]}
           />
         </div>
         <div style={{ position: 'absolute', top: 250, left: 104 }}>
@@ -107,16 +133,18 @@ const Measurement = () => {
             style={{ width: 70 }}
             label={BodyParts.Stomach}
             value={dimensions[BodyParts.Stomach]}
+            focused={dimensions[BodyParts.Stomach]}
           />
         </div>
         <div style={{ position: 'absolute', top: 290, left: 99 }}>
           <TextField
-            onChange={(e) => handleChange(e, BodyParts.Waist)}
+            onChange={(e) => handleChange(e, BodyParts.Hip)}
             variant="standard"
             size="small"
             style={{ width: 70 }}
-            label={BodyParts.Waist}
-            value={dimensions[BodyParts.Waist]}
+            label={BodyParts.Hip}
+            value={dimensions[BodyParts.Hip]}
+            focused={dimensions[BodyParts.Hip]}
           />
         </div>
         <div style={{ position: 'absolute', top: 383, left: 77 }}>
@@ -127,6 +155,7 @@ const Measurement = () => {
             style={{ width: 70 }}
             label={BodyParts.Thighs}
             value={dimensions[BodyParts.Thighs]}
+            focused={dimensions[BodyParts.Thighs]}
           />
         </div>
         <div style={{ position: 'absolute', top: 438, left: 95 }}>
@@ -137,6 +166,7 @@ const Measurement = () => {
             style={{ width: 70 }}
             label={BodyParts.Knee}
             value={dimensions[BodyParts.Knee]}
+            focused={dimensions[BodyParts.Knee]}
           />
         </div>
         <img style={{ height: 700 }} src="/assets/icons/blueprint.svg" alt="blueprint" />
