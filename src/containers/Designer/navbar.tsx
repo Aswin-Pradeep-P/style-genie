@@ -2,6 +2,7 @@ import React, { useRef, useEffect, Dispatch } from "react";
 
 export const Navbar = ({
   navbarItems,
+  activeTab,
   setActiveTab,
 }: {
   navbarItems: {
@@ -9,13 +10,15 @@ export const Navbar = ({
     title: string;
     icon: React.ReactNode;
   }[];
+  activeTab: number;
   setActiveTab: Dispatch<React.SetStateAction<number>>;
 }) => {
   const listRef = useRef<any>();
   const disRef = useRef<any>(null);
 
   useEffect(() => {
-    const dis = listRef.current.querySelector("li:first-child");
+    const listChild = `li:nth-child(${activeTab + 1})`;
+    const dis = listRef.current.querySelector(listChild);
 
     disRef.current = dis;
     align(dis);
@@ -36,6 +39,7 @@ export const Navbar = ({
       document.body.removeEventListener("keydown", handleKeyDown);
       document.body.removeEventListener("keydown", handleArrowKeys);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setActiveTab]);
 
   const handleKeyDown = (e: any) => {
@@ -82,7 +86,7 @@ export const Navbar = ({
     // move the wave
     const left = index * 80 - 98;
 
-    document.getElementById('wave')!.style.left = `${left}px`;
+    document.getElementById("wave")!.style.left = `${left}px`;
   };
 
   return (
