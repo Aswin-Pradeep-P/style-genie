@@ -9,6 +9,9 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '@Constants/routes';
 import { colors } from '@Constants/colors';
+import { useGetProfileMutation } from '@Containers/Home/apiSlice';
+import { useEffect } from 'react';
+import LocalStorage from '@Utils/storage';
 
 const firstName = 'John';
 const lastName = 'Doe';
@@ -16,7 +19,14 @@ const email = 'johndoe@email.com';
 
 const ProfilePage = () => {
 
+  const [getProfile, {data}] = useGetProfileMutation()
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+   const id =  LocalStorage.getItem('genie-user-id');
+   getProfile({id});
+  }, [])
 
   const options = [
     {
@@ -67,7 +77,7 @@ const ProfilePage = () => {
               <div>
                 <b>{`${firstName} ${lastName}`}</b>
               </div>
-              <div style={{ color: 'gray' }}>{email}</div>
+              <div style={{ color: 'gray' }}>{data?.measurement?.[0]?.nickname || email}</div>
             </div>
           </div>
           <div style={{ color: '#1f363d' }}>Edit</div>

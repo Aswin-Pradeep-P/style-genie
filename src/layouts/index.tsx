@@ -20,12 +20,15 @@ import Measurement from "@Containers/Measurement";
 import DesignerHome from "@Containers/Designer/designer-home";
 import OutfitDetails from "@Containers/OutfitDetails/OutfitDetails";
 import StyleEditor from "@Containers/StyleEditor/StyleEditor";
+import { useLoginMutation } from "@Containers/Home/apiSlice";
+import LocalStorage from "@Utils/storage";
 
 export const Layout = () => {
   const appBarRef = useRef(null);
   const [height, setHeight] = useState<string>("0");
 
   const [open, setOpen] = useState<boolean>(false);
+  const [login, loginData] = useLoginMutation();
 
   useEffect(() => {
     const value =
@@ -33,6 +36,16 @@ export const Layout = () => {
 
     setHeight(`${value}px`);
   });
+
+  useEffect(() => {
+    login({})
+  }, [])
+
+  useEffect(() => {
+    if (loginData) {
+      LocalStorage.setItem('genie-user-id', loginData?.data?.out);
+    }
+  }, [loginData])
 
   const handleClose = () => setOpen(false);
 
