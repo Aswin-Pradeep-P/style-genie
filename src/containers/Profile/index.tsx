@@ -25,7 +25,9 @@ const ProfilePage = () => {
 
   useEffect(() => {
    const id =  LocalStorage.getItem('genie-user-id');
-   getProfile({id});
+   setTimeout(() => {
+    getProfile({id});
+   }, 500);
   }, [])
 
   const options = [

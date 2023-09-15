@@ -3,9 +3,11 @@ import { CloseIcon } from '@assets/icons';
 import { AppBar, Loader } from '@Components/index';
 import { Box, Button, IconButton, TextField } from '@mui/material';
 import { uploadImageFile } from '@Utils/s3Service';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
 import styles from './styles';
+import { useGetMeasurementsMutation } from '@Containers/Home/apiSlice';
+import LocalStorage from '@Utils/storage';
 
 enum BodyParts {
   Shoulder = 'Shoulder',
@@ -44,6 +46,24 @@ const Measurement = () => {
     [SelectedStep.SIDE_VIEW]: null,
   });
   const [file, setFile] = useState(null);
+  const [getProfile, {data}] = useGetMeasurementsMutation()
+
+  useEffect(() => {
+    const id =  LocalStorage.getItem('genie-user-id');
+    setTimeout(() => {
+     getProfile({id});
+    }, 500);
+   }, [])
+
+   useEffect(() => {
+    if(data){
+      setDimensionFromApi({
+        data: {
+          measurement: data.measurement[0]
+        }
+      })
+    }
+   }, [data])
 
   const getOverlay = () => {
     return (
