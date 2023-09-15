@@ -9,7 +9,8 @@ export enum ROUTES {
   PROFILE = '/profile/',
   DESIGNER_SIGNUP = '/designer-signup/',
   DESIGNER_DASHBOARD = '/designer-dashboard/',
-  CAPTURE_IMAGE = 'capture-image',
+  CAPTURE_IMAGE = '/capture-image',
+  MEASUREMENT = '/measurement'
 }
 
 export const PUBLIC_ROUTES_REDIRECT = [

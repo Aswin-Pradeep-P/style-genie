@@ -17,6 +17,7 @@ import DesignerDashboard from '@Containers/Designer/designer-dashboard';
 import { ProtectedRoute } from './ProtectedRoute';
 import styles from './styles';
 import ImageCapture from '@Containers/ImageCatpure';
+import Measurement from '@Containers/Measurement';
 
 export const Layout = () => {
   const appBarRef = useRef(null);
@@ -48,6 +49,7 @@ export const Layout = () => {
           <Route path={ROUTES.DESIGNER_SIGNUP} element={<DesignerSignup />} />
           <Route path={ROUTES.DESIGNER_DASHBOARD} element={<DesignerDashboard />} />
           <Route path={ROUTES.CAPTURE_IMAGE} element={<ImageCapture />} />
+          <Route path={ROUTES.MEASUREMENT} element={<Measurement />} />
         </Routes>
       </div>
       <Modal
