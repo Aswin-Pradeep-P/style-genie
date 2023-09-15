@@ -28,7 +28,8 @@ import {
   ordersOverviewData,
 } from "./data";
 import { Paper } from "@mui/material";
-import { useGetHomePageMutation } from "@Containers/Home/apiSlice";
+import { useGetHomePageMutation, useGetProfileMutation } from "@Containers/Home/apiSlice";
+import LocalStorage from "@Utils/storage";
 
 export const Dashboard = ({ activeTab }: { activeTab: number }) => {
   return (
@@ -74,32 +75,33 @@ export const Dashboard = ({ activeTab }: { activeTab: number }) => {
 
 export const Designs = () => {
   const [getAllProducts, { data }] = useGetHomePageMutation();
+  const id =  LocalStorage.getItem('genie-user-id');
 
   useEffect(() => {
-    getAllProducts({});
+    getAllProducts({id});
   }, []);
   return (
     <div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
-        {data?.out?.slice(0, 10)?.map((item) => {
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "2px" }}>
+        {data?.out?.slice(0, 6)?.map((item) => {
           return (
             <Paper
               style={{
-                padding: 15,
+                padding: 10,
                 background: "white",
                 margin: "10px 10px",
                 justifyContent: "space-between",
                 cursor: "pointer",
                 fontSize: "14px",
-                width: "100px",
-                height: "100px",
+                height: "190px",
+                width:"150px"
               }}
             >
               {/* <div>{item.image_url}</div> */}
               <img
                 alt={item.image_url}
                 src={item.image_url}
-                style={{ width: "100px", height: "60px" }}
+                style={{ width: "140px", height: "170px" }}
               />
             </Paper>
           );
@@ -110,33 +112,33 @@ export const Designs = () => {
 };
 
 export const Materials = () => {
-  const [getAllProducts, { data }] = useGetHomePageMutation();
+  const [getMaterials, {data}] = useGetProfileMutation();
 
   useEffect(() => {
-    getAllProducts({});
+    getMaterials({});
   }, []);
   return (
     <div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
-        {data?.out?.slice(0, 10)?.map((item) => {
+      {data?.out?.slice(0, 6)?.map((item) => {
           return (
             <Paper
               style={{
-                padding: 15,
+                padding: 10,
                 background: "white",
                 margin: "10px 10px",
                 justifyContent: "space-between",
                 cursor: "pointer",
                 fontSize: "14px",
-                width: "100px",
-                height: "100px",
+                height: "190px",
+                width:"150px"
               }}
             >
               {/* <div>{item.image_url}</div> */}
               <img
                 alt={item.image_url}
                 src={item.image_url}
-                style={{ width: "100px", height: "60px" }}
+                style={{ width: "140px", height: "170px" }}
               />
             </Paper>
           );
