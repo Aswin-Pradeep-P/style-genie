@@ -47,7 +47,7 @@ const styles = {
     flexDirection: 'column',
     gap: '23px',
     paddingTop: '17px',
-    paddingBottom: '52px'
+    paddingBottom: '20px'
   },
   products: {
     root: { display: 'flex', flexDirection: 'column' }

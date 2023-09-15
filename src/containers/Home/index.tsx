@@ -12,6 +12,16 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { colors } from "@Constants/colors";
 import { useNavigate } from "react-router-dom";
 
+const imageData = [
+  'https://i.pinimg.com/564x/76/eb/9f/76eb9ff45025b7b7e054f67d8a7fd947.jpg',
+  'https://i.pinimg.com/564x/88/5d/26/885d26e11277f28340f8511081dd4ffd.jpg',
+  'https://i.pinimg.com/474x/eb/45/4a/eb454a065e558b7aeebc0c756d7dc4ee.jpg',
+  'https://i.pinimg.com/564x/76/eb/9f/76eb9ff45025b7b7e054f67d8a7fd947.jpg',
+  'https://i.pinimg.com/564x/c8/26/d0/c826d05f91f2f1c682ca62504dc86be7.jpg',
+  'https://i.pinimg.com/564x/88/5d/26/885d26e11277f28340f8511081dd4ffd.jpg',
+  'https://i.pinimg.com/474x/eb/45/4a/eb454a065e558b7aeebc0c756d7dc4ee.jpg',
+].map((d) => ({ image_url: d, default_price: 1000, name: 'Dummy Name' }));
+
 const FAQPage = () => {
   // states
 
@@ -126,9 +136,9 @@ const FAQPage = () => {
             onMouseUp={handleMouseUp}
             onClick={handleClick}
           >
-            {/* {data?.out?.length > 0 && (
+            {imageData?.length > 0 && (
               <>
-                {scrollLeft > 0 && (
+                {/* {scrollLeft > 0 && (
                   <Box
                     className="carousel-arrow-button"
                     sx={[styles.arrowLayout, { left: 0, position: "absolute" }]}
@@ -145,8 +155,8 @@ const FAQPage = () => {
                       />
                     </Box>
                   </Box>
-                )}
-                {showNextArrow() && (
+                )} */}
+                {/* {showNextArrow() && (
                   <Box
                     className="carousel-arrow-button"
                     sx={[
@@ -165,13 +175,11 @@ const FAQPage = () => {
                       />
                     </Box>
                   </Box>
-                )}
+                )} */}
               </>
-            )} */}
+            )}
 
-            {data?.out?.slice(0,5).map((item: any) => {
-              console.log('item ', item);
-              
+            {imageData?.slice(0,4).map((item: any) => {
               return (
                 <div key={item} style={styles.card}>
                   <img src={item?.image_url} />
@@ -245,7 +253,7 @@ const FAQPage = () => {
         <div style={{ marginTop: "100px" }} />
         {renderCarousel()}
         {renderTopBanners(1, "jpg")}
-        {/* {renderCards()} */}
+        {renderCards()}
         {renderTopBanners(2, "jpg")}
         <Box
           sx={{
