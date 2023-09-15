@@ -82,7 +82,7 @@ export const Navbar = ({
     // move the wave
     const left = index * 80 - 98;
 
-    document.getElementById("wave").style.left = `${left}px`;
+    document.getElementById('wave')!.style.left = `${left}px`;
   };
 
   return (
