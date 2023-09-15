@@ -7,7 +7,8 @@ export enum ROUTES {
   CATEGORY = '/category',
   EXPLORE = '/explore',
   PROFILE = '/profile/',
-  DESIGNER_HOME = '/designer/'
+  DESIGNER_HOME = '/designer/',
+  CAPTURE_IMAGE = 'capture-image',
 }
 
 export const PUBLIC_ROUTES_REDIRECT = [
