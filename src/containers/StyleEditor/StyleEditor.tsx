@@ -150,7 +150,7 @@ const StyleEditor = () => {
           </div>
         ) : (
           <img
-            src={currentImgSrc || "/assets/images/ModalImage.svg"}
+            src={currentImgSrc || "/assets/images/ModalImage.png"}
             alt="outfit"
             className="w-full ml-3 my-6  h-[350px]  object-cover "
           />
@@ -197,14 +197,8 @@ const StyleEditor = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-between w-full mt-6 max-w-[450px] fixed bottom-0  bg-white p-4 border-t  ">
-          <button
-            className="py-3 px-10 bg-[#1F363D] text-white rounded-md"
-            onClick={navigateToAIEnhancements}
-          >
-            AI Enhancer
-          </button>
-          <button className="py-3 px-12 bg-[#1F363D] text-white rounded-md" onClick={() => navigate(ROUTES.CHECKOUT)}>
+        <div className="flex justify-center w-full mt-6 max-w-[450px] fixed bottom-0  bg-white p-4 border-t  ">
+          <button className="py-3 px-12 bg-[#1F363D] text-white rounded-md">
             Checkout
           </button>
         </div>

@@ -4,9 +4,10 @@ import { ROUTES } from "@Constants/routes";
 import { useGetOutfitDetailsMutation } from "@Containers/Home/apiSlice";
 
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const OutfitDetails = () => {
+  const { state } = useLocation();
   const outfitDetails = {
     name: "Denim Crop Top",
     details: "Casual Washed Women Dark Blue Top",
@@ -15,7 +16,6 @@ const OutfitDetails = () => {
   };
   const [getOutfitDetails, { data: outfitData, isLoading }] =
     useGetOutfitDetailsMutation();
-
   const navigate = useNavigate();
   const navigateToStyleEnhancement = () => {
     navigate("/style-editor", {
@@ -24,7 +24,7 @@ const OutfitDetails = () => {
   };
 
   useEffect(() => {
-    getOutfitDetails({ id: "6503e8fde40d7addb33a5c7f" });
+    getOutfitDetails({ id: state?.outfitId });
   }, []);
 
   if (isLoading) return <Loader />;
@@ -38,20 +38,20 @@ const OutfitDetails = () => {
             {/* <div className="w-full h-96 bg-[#70a9a1]" /> */}
             <img
               src={
-                outfitData?.out[0]?.image_url || "/assets/images/ModalImage.svg"
+                outfitData?.out[0]?.image_url || "/assets/images/ModalImage.png"
               }
               alt="outfit"
               className="top-[60px] w-full  h-[450px]  object-cover "
             />
           </div>
-          <div className=" h-full  bg-white w-full px-7 py-4  text-start">
+          <div className=" h-full  bg-white w-full px-7 py-16  text-start">
             <div className="flex justify-between gap-4">
               <div className=" ">
                 <div className="text-[#40798C]  font-bold text-xl">
-                  {outfitDetails.name}
+                  {outfitData?.out?.[0]?.name}
                 </div>
                 <div className="text-[#70a9a1] text-sm font-semibold mt-2">
-                  {outfitDetails.details}
+                  {outfitData?.out?.[0]?.description}
                 </div>
               </div>
               <div className="text-[#70a9a1] text-lg font-semibold mt-2">
@@ -59,7 +59,7 @@ const OutfitDetails = () => {
               </div>
             </div>
 
-            <div className="text-[#70a9a1] text-sm font-semibold mt-2">
+            <div className="text-[#70a9a1] text-lg font-semibold mt-2">
               Designer:Sara Mehta
             </div>
           </div>

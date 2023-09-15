@@ -112,6 +112,7 @@ export const Navbar = ({
             key={index}
             data-color="linear-gradient(to top, #09203f 0%, #537895 100%)"
             title={item.title}
+            className="w-[80px] flex items-center justify-center cursor-pointer"
           >
             <span>{item.icon}</span>
           </li>
