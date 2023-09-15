@@ -1,6 +1,6 @@
 import { Box, Paper } from '@mui/material';
 import styles from './styles';
-import { Footer } from '@Components/index';
+import { AppBar, Footer } from '@Components/index';
 import RedeemIcon from '@mui/icons-material/Redeem';
 import SquareFootIcon from '@mui/icons-material/SquareFoot';
 import HomeIcon from '@mui/icons-material/Home';
@@ -42,8 +42,9 @@ const ProfilePage = () => {
 
   return (
     <Box sx={[styles.root]}>
-      <div style={{ border: '1px solid black', height: '100%' }}>
-        <div style={{ background: 'white', padding: 10 }}>John Doe</div>
+      <AppBar />
+      <div>
+        <div style={{ background: 'white', padding: 10, marginTop: 15 }}>John Doe</div>
         <div style={{ display: 'flex', padding: 10, alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <div

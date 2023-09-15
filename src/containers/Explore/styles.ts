@@ -14,15 +14,14 @@ const styles = {
     position: 'sticky'
   },
   productCard: {
-    width: '48.5%',
-    marginBottom: '17px',
     position: 'relative',
     marginLeft: '5px'
   },
   image: {
-    width: '95%',
-    height: '250px',
-    borderRadius: '10px'
+    height: '290px',
+    width: '195px',
+    borderTopLeftRadius: '5px',
+    borderTopRightRadius: '5px'
   }
 };
 

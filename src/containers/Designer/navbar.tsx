@@ -1,4 +1,5 @@
-import { useRef, useEffect } from 'react';
+// @ts-nocheck
+import React, { useRef, useEffect, Dispatch } from "react";
 
 export const Navbar = () => {
   const listRef = useRef<any>();
