@@ -9,7 +9,7 @@ const styles = {
     width: '100%',
     maxWidth: '450px',
     zIndex: 100,
-    backgroundColor: 'red'
+    backgroundColor: 'white'
   },
   appbar: {
     backgroundColor: colors.SECONDARY,

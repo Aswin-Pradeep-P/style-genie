@@ -7,6 +7,7 @@ export enum ROUTES {
   CATEGORY = '/category/',
   EXPLORE = '/explore/',
   EXPLORE_CATEGORY = '/explore/:type',
+  EXPLORE_SEARCH = '/explore/:search',
   PROFILE = '/profile/',
   DESIGNER_SIGNUP = '/designer-signup/',
   DESIGNER_HOME = '/designer-home/',

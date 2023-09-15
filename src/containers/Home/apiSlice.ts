@@ -27,7 +27,21 @@ const profileApis = baseApi.injectEndpoints({
         method: RequestTypes.GET
       })
     }),
+
+    login: builder.mutation({
+      query: () => ({
+        url: `/api/login`,
+        method: RequestTypes.GET
+      })
+    }),
+    getProfile: builder.mutation({
+      query: (payload) => ({
+        url: `/api/user-profiles?id=${payload.id}`,
+        method: RequestTypes.GET
+      })
+    }),
   })
 });
 
-export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation } = profileApis;
+
+export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation, useLoginMutation, useGetProfileMutation } = profileApis;

@@ -5,7 +5,8 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    height: '100%'
+    height: '100%',
+    backgroundColor: colors.WHITE
   },
   footerWrapper: {
     display: 'flex',

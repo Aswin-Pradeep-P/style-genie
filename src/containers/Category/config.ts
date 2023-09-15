@@ -4,7 +4,7 @@ export const CATEGORY_DATA = [
     sub_title: 'Elevate style with versatile kurtas',
     image_url: '/assets/icons/kurta.jpg',
     new_image_url: '/assets/icons/kurta.jpg',
-    key: 'kurtas',
+    key: 'kurta',
     color: '#BBD4EB88',
     background_color: '#E1F1FF66'
   },
@@ -22,7 +22,7 @@ export const CATEGORY_DATA = [
     sub_title: 'Amp up your style with our tops',
     image_url: '/assets/icons/tops.jpg',
     new_image_url: '/assets/icons/tops.jpg',
-    key: 'tops',
+    key: 'top',
     color: '#CABFF188',
     background_color: '#EDE8FF66',
   },
@@ -34,14 +34,14 @@ export const CATEGORY_DATA = [
     new_image_url: '/assets/icons/maxi.jpg',
     color: '#F3E8C188',
     background_color: '#F9F2D766',
-    key: 'dresses'
+    key: 'dress'
   },
   {
     title: 'Bottoms',
     sub_title: 'Confidence starts with what you wear',
     image_url: '/assets/icons/bottoms.jpg',
     new_image_url: '/assets/icons/bottoms.jpg',
-    key: 'bottoms',
+    key: 'bottom',
     color: '#EFC0BE88',
     background_color: '#FEE7E666',
   },
@@ -53,6 +53,6 @@ export const CATEGORY_DATA = [
     new_image_url: '/assets/icons/shirts.jpg',
     color: '#F3E8C188',
     background_color: '#F9F2D766',
-    key: 'shirts'
+    key: 'shirt'
   },
 ];

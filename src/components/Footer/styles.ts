@@ -9,7 +9,8 @@ const styles = {
     maxWidth: '450px',
     zIndex: 100,
     bottom: 0,
-    filter: 'drop-shadow(0px -1px 2px rgba(0, 0, 0, 0.13))'
+    filter: 'drop-shadow(0px -1px 2px rgba(0, 0, 0, 0.13))',
+    backgroundColor: colors.SECONDARY,
   },
   appbar: {
     backgroundColor: colors.SECONDARY,

@@ -16,6 +16,15 @@ const styles = {
     },
     contentWrapper: { display: 'flex' }
   },
+  search: {
+    // flex: 1,
+    outline: 'none',
+    fontSize: '16px',
+    border: '1px solid #1D6B46',
+    width: '90%',
+    borderRadius: '10px',
+    padding: '10px 20px'
+  },
   ratingstar: {
     height: '12px',
     width: '12px',
@@ -25,7 +34,7 @@ const styles = {
     display: 'flex',
     // justifyContent: 'space-around',
     width: '170px',
-    height: '250px',
+    height: '150px',
     marginRight: '5px'
   },
   footerWrapper: {
@@ -38,7 +47,7 @@ const styles = {
     flexDirection: 'column',
     gap: '23px',
     paddingTop: '17px',
-    paddingBottom: '52px'
+    paddingBottom: '20px'
   },
   products: {
     root: { display: 'flex', flexDirection: 'column' }

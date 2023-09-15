@@ -21,12 +21,15 @@ import DesignerHome from "@Containers/Designer/designer-home";
 import OutfitDetails from "@Containers/OutfitDetails/OutfitDetails";
 import StyleEditor from "@Containers/StyleEditor/StyleEditor";
 import AIEnhancer from "@Containers/AIEnhancer/AIEnhancer";
+import { useLoginMutation } from "@Containers/Home/apiSlice";
+import LocalStorage from "@Utils/storage";
 
 export const Layout = () => {
   const appBarRef = useRef(null);
   const [height, setHeight] = useState<string>("0");
 
   const [open, setOpen] = useState<boolean>(false);
+  const [login, loginData] = useLoginMutation();
 
   useEffect(() => {
     const value =
@@ -34,6 +37,16 @@ export const Layout = () => {
 
     setHeight(`${value}px`);
   });
+
+  useEffect(() => {
+    login({});
+  }, []);
+
+  useEffect(() => {
+    if (loginData) {
+      LocalStorage.setItem("genie-user-id", loginData?.data?.out);
+    }
+  }, [loginData]);
 
   const handleClose = () => setOpen(false);
 
@@ -51,6 +64,11 @@ export const Layout = () => {
           <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
           <Route path={ROUTES.EXPLORE} element={<ExplorePage />} />
           <Route path={ROUTES.EXPLORE_CATEGORY} element={<ExplorePage />} />
+          <Route path={ROUTES.EXPLORE_SEARCH} element={<ExplorePage />} />
+          <Route
+            path={ROUTES.FAQS}
+            element={<ProtectedRoute Component={FAQPage} />}
+          />
           <Route
             path={ROUTES.FAQS}
             element={<ProtectedRoute Component={FAQPage} />}
@@ -63,7 +81,6 @@ export const Layout = () => {
           <Route path={ROUTES.OUTFIT_DETAILS} element={<OutfitDetails />} />
           <Route path={ROUTES.STYLE_EDITOR} element={<StyleEditor />} />
           <Route path={ROUTES.AI_ENHANCER} element={<AIEnhancer />} />
-
         </Routes>
       </div>
       <Modal

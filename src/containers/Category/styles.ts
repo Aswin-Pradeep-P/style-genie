@@ -71,7 +71,7 @@ const styles = {
     height: '100%',
     borderRadius: '10px'
   },
-  contentWrapper: { display: 'flex', flexDirection: 'column', padding: '56px 0 90px 0', backgroundColor: colors.WHITE },
+  contentWrapper: { display: 'flex', flexDirection: 'column', padding: '100px 0 90px 0', backgroundColor: colors.WHITE },
   line: {},
   title: {
     fontWeight: 600,

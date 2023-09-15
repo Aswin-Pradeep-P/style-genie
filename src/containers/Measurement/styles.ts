@@ -6,7 +6,7 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: '100%',
-    backGroundColor: colors.DIM_GRAY
+    backgroundColor: colors.WHITE
   },
   footerWrapper: {
     display: 'flex',

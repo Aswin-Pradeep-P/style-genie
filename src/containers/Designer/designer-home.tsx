@@ -7,7 +7,7 @@ import { useState } from "react";
 import { navbarItems } from "./constants";
 import { UserIcon } from "@assets/icons";
 import Logo from "@assets/icons/StyleGenieLogo.png";
-import { Dashboard, Designs, Orders } from "./dashboard";
+import { Dashboard, Designs, Materials, Orders } from "./dashboard";
 
 const DesignerHome = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -31,7 +31,7 @@ const DesignerHome = () => {
           {/* {navbarItems.find((item) => item.id === activeTab)?.title} */}
           {activeTab === 0 && <Dashboard activeTab={dashboardActiveTab} />}
           {activeTab === 1 && <Designs />}
-          {activeTab === 2 && <div>Materials</div>}
+          {activeTab === 2 && <Materials />}
           {activeTab === 3 && <Orders />}
         </div>
         <Navbar navbarItems={navbarItems} setActiveTab={setActiveTab} />

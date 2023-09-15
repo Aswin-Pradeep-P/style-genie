@@ -8,6 +8,10 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '@Constants/routes';
+import { colors } from '@Constants/colors';
+import { useGetProfileMutation } from '@Containers/Home/apiSlice';
+import { useEffect } from 'react';
+import LocalStorage from '@Utils/storage';
 
 const firstName = 'John';
 const lastName = 'Doe';
@@ -15,7 +19,14 @@ const email = 'johndoe@email.com';
 
 const ProfilePage = () => {
 
+  const [getProfile, {data}] = useGetProfileMutation()
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+   const id =  LocalStorage.getItem('genie-user-id');
+   getProfile({id});
+  }, [])
 
   const options = [
     {
@@ -44,8 +55,8 @@ const ProfilePage = () => {
     <Box sx={[styles.root]}>
       <AppBar />
       <div>
-        <div style={{ background: 'white', padding: 10, marginTop: 15 }}>John Doe</div>
-        <div style={{ display: 'flex', padding: 10, alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ background: 'white', padding: 10, marginTop: '70px' }}>John Doe</div>
+        <div style={{ display: 'flex', padding: '20px', alignItems: 'center', justifyContent: 'space-between' , backgroundColor: colors.LIGHT_GRAY}}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <div
               style={{
@@ -66,16 +77,15 @@ const ProfilePage = () => {
               <div>
                 <b>{`${firstName} ${lastName}`}</b>
               </div>
-              <div style={{ color: 'gray' }}>{email}</div>
+              <div style={{ color: 'gray' }}>{data?.measurement?.[0]?.nickname || email}</div>
             </div>
           </div>
           <div style={{ color: '#1f363d' }}>Edit</div>
         </div>
-        <Paper style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
           {options.map((option) => {
             return (
-              <div style={{ display: 'flex', padding: 15, background: 'white',
-               borderBottom: '1px solid grey', justifyContent: 'space-between', cursor: 'pointer', fontSize: '14px',
+              <Paper style={{ display: 'flex', padding: 15, background: 'white', margin: '10px 10px', justifyContent: 'space-between', cursor: 'pointer', fontSize: '14px',
                 }} onClick={option.onClick}>
                 <div>
                   <span style={{ marginRight: 15 }}>{option.icon}</span>
@@ -84,10 +94,10 @@ const ProfilePage = () => {
                 <div>
               <ArrowForwardIosIcon fontSize='small' />
                   </div>
-              </div>
+              </Paper>
             );
           })}
-        </Paper>
+        </div>
       </div>
 
       <Box sx={styles.footerWrapper}>
