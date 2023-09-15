@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Header from "@Components/Header/Header";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGetCustomizeMutation } from "@Containers/Home/apiSlice";
+import { ROUTES } from "@Constants/routes";
 
 const StyleEditor = () => {
   const [
@@ -203,7 +204,7 @@ const StyleEditor = () => {
           >
             AI Enhancer
           </button>
-          <button className="py-3 px-12 bg-[#1F363D] text-white rounded-md">
+          <button className="py-3 px-12 bg-[#1F363D] text-white rounded-md" onClick={() => navigate(ROUTES.CHECKOUT)}>
             Checkout
           </button>
         </div>
