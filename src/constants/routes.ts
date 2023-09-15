@@ -13,7 +13,8 @@ export enum ROUTES {
   CAPTURE_IMAGE = '/capture-image',
   MEASUREMENT = '/measurement',
   OUTFIT_DETAILS = '/outfit-details',
-  STYLE_EDITOR='/style-editor'
+  STYLE_EDITOR = '/style-editor',
+  AI_ENHANCER = '/ai-enhancer'
 }
 
 export const PUBLIC_ROUTES_REDIRECT = [

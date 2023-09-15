@@ -20,6 +20,7 @@ import Measurement from "@Containers/Measurement";
 import DesignerHome from "@Containers/Designer/designer-home";
 import OutfitDetails from "@Containers/OutfitDetails/OutfitDetails";
 import StyleEditor from "@Containers/StyleEditor/StyleEditor";
+import AIEnhancer from "@Containers/AIEnhancer/AIEnhancer";
 
 export const Layout = () => {
   const appBarRef = useRef(null);
@@ -61,6 +62,8 @@ export const Layout = () => {
           <Route path={ROUTES.MEASUREMENT} element={<Measurement />} />
           <Route path={ROUTES.OUTFIT_DETAILS} element={<OutfitDetails />} />
           <Route path={ROUTES.STYLE_EDITOR} element={<StyleEditor />} />
+          <Route path={ROUTES.AI_ENHANCER} element={<AIEnhancer />} />
+
         </Routes>
       </div>
       <Modal
