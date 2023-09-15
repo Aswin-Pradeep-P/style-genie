@@ -8,6 +8,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '@Constants/routes';
+import { colors } from '@Constants/colors';
 
 const firstName = 'John';
 const lastName = 'Doe';
@@ -44,8 +45,8 @@ const ProfilePage = () => {
     <Box sx={[styles.root]}>
       <AppBar />
       <div>
-        <div style={{ background: 'white', padding: 10, marginTop: 15 }}>John Doe</div>
-        <div style={{ display: 'flex', padding: 10, alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ background: 'white', padding: 10, marginTop: '70px' }}>John Doe</div>
+        <div style={{ display: 'flex', padding: '20px', alignItems: 'center', justifyContent: 'space-between' , backgroundColor: colors.LIGHT_GRAY}}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <div
               style={{
@@ -71,11 +72,10 @@ const ProfilePage = () => {
           </div>
           <div style={{ color: '#1f363d' }}>Edit</div>
         </div>
-        <Paper style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
           {options.map((option) => {
             return (
-              <div style={{ display: 'flex', padding: 15, background: 'white',
-               borderBottom: '1px solid grey', justifyContent: 'space-between', cursor: 'pointer', fontSize: '14px',
+              <Paper style={{ display: 'flex', padding: 15, background: 'white', margin: '10px 10px', justifyContent: 'space-between', cursor: 'pointer', fontSize: '14px',
                 }} onClick={option.onClick}>
                 <div>
                   <span style={{ marginRight: 15 }}>{option.icon}</span>
@@ -84,10 +84,10 @@ const ProfilePage = () => {
                 <div>
               <ArrowForwardIosIcon fontSize='small' />
                   </div>
-              </div>
+              </Paper>
             );
           })}
-        </Paper>
+        </div>
       </div>
 
       <Box sx={styles.footerWrapper}>

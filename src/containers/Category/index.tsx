@@ -84,6 +84,7 @@ const FAQPage = () => {
   return (
     <Box sx={[styles.root]}>
       <AppBar />
+      {/* <div style={{marginTop: '10px'}}/> */}
       <Box sx={styles.contentWrapper}>
         {CATEGORY_DATA?.map((item: any, index: number) => {
           const backgroundColor = cardColorArray[index % colorArray.length];

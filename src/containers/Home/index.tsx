@@ -30,8 +30,6 @@ const FAQPage = () => {
 
   const [getHomepage, { data }] = useGetHomePageMutation();
 
-  console.log("homepageData ", data);
-
   useEffect(() => {
     getHomepage({});
   }, []);
@@ -118,7 +116,7 @@ const FAQPage = () => {
             onMouseUp={handleMouseUp}
             onClick={handleClick}
           >
-            {data?.out?.length > 0 && (
+            {/* {data?.out?.length > 0 && (
               <>
                 {scrollLeft > 0 && (
                   <Box
@@ -159,12 +157,14 @@ const FAQPage = () => {
                   </Box>
                 )}
               </>
-            )}
+            )} */}
 
-            {data?.out?.map((item: any) => {
+            {data?.out?.slice(0,5).map((item: any) => {
+              console.log('item ', item);
+              
               return (
                 <div key={item} style={styles.card}>
-                  <img src="https://wforwoman.com/content/wp-content/uploads/2020/04/Ecru-Mandarin-Neck-Khadi-Kurta-1.jpg" />
+                  <img src={item?.image_url} />
                 </div>
               );
             })}
@@ -209,23 +209,11 @@ const FAQPage = () => {
     <Box sx={[styles.root]}>
       <AppBar />
       <Box sx={{ backgroundColor: "white" }}>
-        <div style={{ marginTop: "60px" }} />
-        <Box sx={{backgroundColor: 'rgb(247,247,247)', padding: '3px 10px', margin: '30px 0px 5px 0px', alignItems: 'center', display: 'flex', flexDirection: 'column'}}>
-        <div style={{
-              fontSize: "14px",
-              fontWeight: "400",
-              textAlign: 'center'
-            }}>Please allow 5-7 days for us to deliver your personalized made-to-order dress</div>
-       </Box>
+        <div style={{ marginTop: "100px" }} />
         {renderCarousel()}
-        {renderTopBanners(1, "png")}
+        {renderTopBanners(1, "jpg")}
         {renderCards()}
-        {renderTopBanners(4, "png")}
-        {renderTopBanners(5, "png")}
-        {renderTopBanners(6, "png")}
-        {renderTopBanners(7, "png")}
-        {renderCards()}
-        {renderTopBanners(3, "png")}
+        {renderTopBanners(2, "jpg")}
         <Box
           sx={{
             display: "flex",
@@ -234,127 +222,6 @@ const FAQPage = () => {
             padding: "20px",
           }}
         >
-          <div
-            style={{
-              fontSize: "16px",
-              fontWeight: "700",
-              marginBottom: "20px",
-            }}
-          >
-            Customer Speak
-          </div>
-          <div
-            style={{
-              fontSize: "12px",
-              fontWeight: "500",
-              marginBottom: "20px",
-            }}
-          >
-            We love to hear from you. Email us with whatever you'd like to share
-            – whether it’s feedback on our products, customer service.
-          </div>
-          <Box
-            sx={{ border: `1px solid ${colors.LIGHT_GRAY}`, padding: "15px" , margin: '10px', width: '410px'}}
-          >
-            <Box sx={{display: 'flex', flexDirection: 'row', marginBottom: '10px'}}>
-              {[1,2,3,4,5].map(i => <Star style={styles.ratingstar} fill='orange' />)}
-            </Box>
-            <div
-              style={{
-                fontSize: "11px",
-                fontWeight: "400",
-                fontStyle: "italic",
-              }}
-            >
-              My entire experience with Style-Genie met and even exceeded my
-              expectations. Delivered on time, as promised. The dress is well
-              made and BEAUTIFUL! The fit is perfect. I love, love, love it!
-              100% pleased. I will definitely be a returning client.
-            </div>
-            <div
-              style={{
-                fontSize: "11px",
-                fontWeight: "600",
-                margin: "10px 0px",
-              }}
-            >
-              -Julie F Cass
-            </div>
-            <div
-              style={{
-                fontSize: "11px",
-                fontWeight: "400",
-              }}
-            >
-              08/10/2023
-            </div>
-          </Box>
-          <Box
-            sx={{ border: `1px solid ${colors.LIGHT_GRAY}`, padding: "15px",  margin: '10px', width: '410px' }}
-          >
-             <Box sx={{display: 'flex', flexDirection: 'row', marginBottom: '10px'}}>
-              {[1,2,3,4,5].map(i => <Star style={styles.ratingstar} fill='orange' />)}
-            </Box>
-            <div
-              style={{
-                fontSize: "11px",
-                fontWeight: "400",
-                fontStyle: "italic",
-              }}
-            >
-              It has been interesting as to the large varieties of dresses to choose from. Enjoying myself as to the ideas that I'm getting in my head
-            </div>
-            <div
-              style={{
-                fontSize: "11px",
-                fontWeight: "600",
-                margin: "10px 0px",
-              }}
-            >
-            -Brandon G.
-            </div>
-            <div
-              style={{
-                fontSize: "11px",
-                fontWeight: "400",
-              }}
-            >
-             7/18/2023
-            </div>
-          </Box>
-          <Box
-            sx={{ border: `1px solid ${colors.LIGHT_GRAY}`, padding: "15px", width: '410px' }}
-          >
-             <Box sx={{display: 'flex', flexDirection: 'row', marginBottom: '10px'}}>
-              {[1,2,3,4,5].map(i => <Star style={styles.ratingstar} fill='orange' />)}
-            </Box>
-            <div
-              style={{
-                fontSize: "11px",
-                fontWeight: "400",
-                fontStyle: "italic",
-              }}
-            >
-             I loved, loved having options to change a dresses neckline, hemline length and sleeve length. The prices are a fair, a great value. The attention to detail is good: pockets and a hook and eye. Highly recommend!! I will purchase again.
-            </div>
-            <div
-              style={{
-                fontSize: "11px",
-                fontWeight: "600",
-                margin: "10px 0px",
-              }}
-            >
-            -Marie N
-            </div>
-            <div
-              style={{
-                fontSize: "11px",
-                fontWeight: "400",
-              }}
-            >
-             7/18/2023
-            </div>
-          </Box>
         </Box>
       </Box>
 

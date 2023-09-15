@@ -25,7 +25,7 @@ const styles = {
     display: 'flex',
     // justifyContent: 'space-around',
     width: '170px',
-    height: '250px',
+    height: '150px',
     marginRight: '5px'
   },
   footerWrapper: {
