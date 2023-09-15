@@ -62,8 +62,6 @@ const FAQPage = () => {
     }
   }, [type]);
 
-  console.log("productsData ", productsData);
-
   useEffect(() => {
     if (search) {
       // search
@@ -72,14 +70,20 @@ const FAQPage = () => {
   }, [search])
 
   useEffect(() => {
-
+    
     if (data?.out?.length > 0) {
       setProducts(data?.out )
     }
 
   }, [data])
 
-  console.log('data ', data?.out);
+  useEffect(() => {
+    
+    if (productsData?.data?.out?.length > 0) {
+      setProducts(productsData?.data?.out)
+    }
+
+  }, [productsData?.data])
   console.log('products ', products);
 
   const navigate = useNavigate();
