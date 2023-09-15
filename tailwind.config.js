@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 module.exports = {
   mode: 'jit',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  
   theme: {
     colors: {
       transparent: 'transparent',

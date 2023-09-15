@@ -13,7 +13,8 @@ const styles = {
   },
   appbar: {
     backgroundColor: colors.SECONDARY,
-    top: 'unset'
+    top: 'unset',
+    borderRadius: '10px 10px 0px 00px'
   },
   logo: {
     width: 60,
