@@ -198,7 +198,7 @@ const StyleEditor = () => {
           ))}
         </div>
         <div className="flex justify-center w-full mt-6 max-w-[450px] fixed bottom-0  bg-white p-4 border-t  ">
-          <button className="py-3 px-12 bg-[#1F363D] text-white rounded-md">
+          <button className="py-3 px-12 bg-[#1F363D] text-white rounded-md" onClick={() => navigate(ROUTES.CHECKOUT)}>
             Checkout
           </button>
         </div>

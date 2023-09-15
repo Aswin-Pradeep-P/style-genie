@@ -8,20 +8,13 @@ const Checkout = () => {
     <>
       <AppBar />
       <div style={{ height: '100vh', background: 'white' }}>
-        <div style={{ paddingTop: '50px', paddingLeft: '20px', paddingRight: '20px' }}>
-          <div style={{ marginBottom: 20 }}>Checkout</div>
+        <div style={{ paddingTop: '120px', paddingLeft: '20px', paddingRight: '20px' }}>
+          <div style={{ marginBottom: 20, fontWeight: 'bold' }}>Billing Summary</div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
-            <div style={{ color: 'gray' }}>Billing Summary</div>
+            <div style={{ color: 'gray' }}>Material Cost</div>
             <div>
               <CurrencyRupeeOutlined fontSize="small" />
               1200
-            </div>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
-            <div style={{ color: 'gray' }}>Stiching Cost</div>
-            <div>
-              <CurrencyRupeeOutlined fontSize="small" />
-              1000
             </div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
