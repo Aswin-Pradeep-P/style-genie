@@ -1,5 +1,15 @@
 export const CATEGORY_DATA = [
   {
+    title: 'Dresses',
+    sub_title: 'Comfort and stylish dresses',
+    image_url:
+      '/assets/icons/maxi.jpg',
+    new_image_url: '/assets/icons/maxi.jpg',
+    color: '#F3E8C188',
+    background_color: '#F9F2D766',
+    key: 'dress'
+  },
+  {
     title: 'Kurtas',
     sub_title: 'Elevate style with versatile kurtas',
     image_url: '/assets/icons/kurta.jpg',
@@ -25,16 +35,6 @@ export const CATEGORY_DATA = [
     key: 'top',
     color: '#CABFF188',
     background_color: '#EDE8FF66',
-  },
-  {
-    title: 'Dresses',
-    sub_title: 'Comfort and stylish dresses',
-    image_url:
-      '/assets/icons/maxi.jpg',
-    new_image_url: '/assets/icons/maxi.jpg',
-    color: '#F3E8C188',
-    background_color: '#F9F2D766',
-    key: 'dress'
   },
   {
     title: 'Bottoms',
