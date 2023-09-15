@@ -3,6 +3,8 @@ import { ReactComponent as ErrorIcon } from './ErrorIcon.svg';
 import { ReactComponent as ErrorCloseIcon } from './CloseError.svg';
 import { ReactComponent as TickCircleIcon } from './TickCircle.svg';
 import { ReactComponent as CloseIcon } from './Close.svg';
+import { ReactComponent as ChevronRight } from './ChevronRight.svg';
+import { ReactComponent as ChevronLeft } from './ChevronLeft.svg';
 
 import { ReactComponent as Category } from './Category.svg';
 import { ReactComponent as CategoryActive } from './CategoryActive.svg';
@@ -23,25 +25,27 @@ import { ReactComponent as LoginStep3 } from './LoginStep3.svg';
 import { ReactComponent as ArrowForward } from './arrow-forward.svg';
 
 export {
-  ErrorIcon,
-  ErrorCloseIcon,
-  TickCircleIcon,
-  CloseButton,
-  CloseIcon,
-  Category,
-  HomeIcon,
-  Explore,
-  Profile,
-  SearchIcon,
-  NotificationIcon,
-  UserImage,
-  CategoryActive,
-  HomeIconActive,
-  ExploreActive,
-  ProfileActive,
-  ArrowRightIcon,
-  LoginStep1,
-  LoginStep2,
-  LoginStep3,
-  ArrowForward
+    ErrorIcon,
+    ErrorCloseIcon,
+    TickCircleIcon,
+    CloseButton,
+    CloseIcon,
+    ChevronRight,
+    ChevronLeft,
+    Category,
+    HomeIcon,
+    Explore,
+    Profile,
+    SearchIcon,
+    NotificationIcon,
+    UserImage,
+    CategoryActive,
+    HomeIconActive,
+    ExploreActive,
+    ProfileActive,
+    ArrowRightIcon,
+    LoginStep1,
+    LoginStep2,
+    LoginStep3,
+    ArrowForward
 };
