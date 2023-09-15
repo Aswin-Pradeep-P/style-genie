@@ -8,7 +8,8 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: '100%',
-    width: '100%'
+    width: '100%',
+    backgroundColor: colors.WHITE,
   },
   cardContainer: {
     display: 'flex',
@@ -67,7 +68,8 @@ const styles = {
   },
   image: {
     aspectRatio: 1,
-    height: '100%'
+    height: '100%',
+    borderRadius: '10px'
   },
   contentWrapper: { display: 'flex', flexDirection: 'column', padding: '56px 0 90px 0', backgroundColor: colors.WHITE },
   line: {},
