@@ -1,8 +1,9 @@
-import { ChevronLeft, ChevronRight } from "@assets/icons";
+import { ChevronLeft, ChevronRight, UserIcon } from "@assets/icons";
 import { ModalImage } from "@assets/images";
 import { useState } from "react";
+import Logo from "@assets/icons/StyleGenieLogo.png";
 
-const ImageEditor = () => {
+const StyleEditor = () => {
   const editorTools = [
     {
       type: "fit",
@@ -91,6 +92,10 @@ const ImageEditor = () => {
 
   return (
     <div className="h-full min-h-screen flex flex-col   justify-center items-center pt-4 px-4 ">
+      <header className="flex w-full items-center justify-between h-[100px] p-5">
+        <img src={Logo} alt="StyleGenie" className="h-[50px]" />
+        <UserIcon className="bg-green-2 rounded-full text-blue-2" />
+      </header>
       <div className=" flex justify-between items-center bg-[#70a9a1] mt-16 rounded-md text-center text-lg font-semibold text-white border p-3 w-full ">
         <button onClick={handlePrev} disabled={editorToolIndex <= 0}>
           <ChevronLeft />
@@ -128,4 +133,4 @@ const ImageEditor = () => {
   );
 };
 
-export default ImageEditor;
+export default StyleEditor;

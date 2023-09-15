@@ -11,7 +11,9 @@ export enum ROUTES {
   DESIGNER_SIGNUP = '/designer-signup/',
   DESIGNER_HOME = '/designer-home/',
   CAPTURE_IMAGE = '/capture-image',
-  MEASUREMENT = '/measurement'
+  MEASUREMENT = '/measurement',
+  OUTFIT_DETAILS = '/outfit-details',
+  STYLE_EDITOR='/style-editor'
 }
 
 export const PUBLIC_ROUTES_REDIRECT = [
