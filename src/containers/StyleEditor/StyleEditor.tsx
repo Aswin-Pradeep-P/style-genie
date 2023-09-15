@@ -12,6 +12,7 @@ const StyleEditor = () => {
     { data: customizedData, isLoading: isCustomizationLoading },
   ] = useGetCustomizeMutation();
   const { state } = useLocation();
+  const [currentIndex, setCurrentIndex] = useState<Number>();
   const [currentImgSrc, setCurrentImgSrc] = useState();
   const navigate = useNavigate();
   enum NeckTypes {
@@ -120,9 +121,10 @@ const StyleEditor = () => {
     navigate("/ai-enhancer");
   };
 
-  const handleCustomization = (type: NeckTypes) => {
+  const handleCustomization = (type: NeckTypes, index: number) => {
+    setCurrentIndex(index);
     getCustomization({
-      id: "6503e8fde40d7addb33a5c7f",
+      id: state?.outfitId,
       neckline: type,
     });
   };
@@ -175,13 +177,16 @@ const StyleEditor = () => {
         </div>
 
         <div className="flex  w-full justify-center gap-4 mb-10">
-          {editorTools[editorToolIndex].options.map((option, i) => (
-            <div key={i}>
+          {editorTools[editorToolIndex].options.map((option, index) => (
+            <div key={index}>
               <button
-                className="border border-[#40798C]  rounded-md"
+                className={`${
+                  currentIndex === index ? "border-4 shadow-3" : "border"
+                } border-[#40798C]  rounded-md`}
                 onClick={() =>
                   handleCustomization(
-                    option?.type ? option?.type : NeckTypes.VNECK
+                    option?.type ? option?.type : NeckTypes.VNECK,
+                    index
                   )
                 }
               >
