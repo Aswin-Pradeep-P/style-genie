@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Typography,
   Card,
@@ -27,6 +27,8 @@ import {
   projectsTableData,
   ordersOverviewData,
 } from "./data";
+import { Paper } from "@mui/material";
+import { useGetHomePageMutation } from "@Containers/Home/apiSlice";
 
 export const Dashboard = ({ activeTab }: { activeTab: number }) => {
   return (
@@ -71,134 +73,79 @@ export const Dashboard = ({ activeTab }: { activeTab: number }) => {
 };
 
 export const Designs = () => {
-  return (
-    <Card className="overflow-hidden xl:col-span-2">
-      <CardHeader
-        floated={false}
-        shadow={false}
-        color="transparent"
-        className="m-0 flex items-center justify-between p-6"
-      >
-        <div>
-          <Typography variant="h6" color="blue-gray" className="mb-1">
-            Projects
-          </Typography>
-          <Typography
-            variant="small"
-            className="flex items-center gap-1 font-normal text-blue-gray-600"
-          >
-            <CheckIcon strokeWidth={3} className="h-4 w-4 text-blue-500" />
-            <strong>30 done</strong> this month
-          </Typography>
-        </div>
-        <Menu placement="left-start">
-          <MenuHandler>
-            <IconButton size="sm" variant="text" color="blue-gray">
-              <EllipsisVerticalIcon
-                strokeWidth={3}
-                fill="currenColor"
-                className="h-6 w-6"
-              />
-            </IconButton>
-          </MenuHandler>
-          <MenuList>
-            <MenuItem>Action</MenuItem>
-            <MenuItem>Another Action</MenuItem>
-            <MenuItem>Something else here</MenuItem>
-          </MenuList>
-        </Menu>
-      </CardHeader>
-      <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
-        <table className="w-full min-w-[640px] table-auto">
-          <thead>
-            <tr>
-              {["companies", "members", "budget", "completion"].map((el) => (
-                <th
-                  key={el}
-                  className="border-b border-blue-gray-50 py-3 px-6 text-left"
-                >
-                  <Typography
-                    variant="small"
-                    className="text-[11px] font-medium uppercase text-blue-gray-400"
-                  >
-                    {el}
-                  </Typography>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {projectsTableData.map(
-              ({ img, name, members, budget, completion }, key) => {
-                const className = `py-3 px-5 ${
-                  key === projectsTableData.length - 1
-                    ? ""
-                    : "border-b border-blue-gray-50"
-                }`;
+  const [getAllProducts, { data }] = useGetHomePageMutation();
 
-                return (
-                  <tr key={name}>
-                    <td className={className}>
-                      <div className="flex items-center gap-4">
-                        <Avatar src={img} alt={name} size="sm" />
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-bold"
-                        >
-                          {name}
-                        </Typography>
-                      </div>
-                    </td>
-                    <td className={className}>
-                      {members.map(({ img, name }, key) => (
-                        <Tooltip key={name} content={name}>
-                          <Avatar
-                            src={img}
-                            alt={name}
-                            size="xs"
-                            variant="circular"
-                            className={`cursor-pointer border-2 border-white ${
-                              key === 0 ? "" : "-ml-2.5"
-                            }`}
-                          />
-                        </Tooltip>
-                      ))}
-                    </td>
-                    <td className={className}>
-                      <Typography
-                        variant="small"
-                        className="text-xs font-medium text-blue-gray-600"
-                      >
-                        {budget}
-                      </Typography>
-                    </td>
-                    <td className={className}>
-                      <div className="w-10/12">
-                        <Typography
-                          variant="small"
-                          className="mb-1 block text-xs font-medium text-blue-gray-600"
-                        >
-                          {completion}%
-                        </Typography>
-                        <Progress
-                          value={completion}
-                          variant="gradient"
-                          color={completion === 100 ? "green" : "blue"}
-                          className="h-1"
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                );
-              }
-            )}
-          </tbody>
-        </table>
-      </CardBody>
-    </Card>
+  useEffect(() => {
+    getAllProducts({});
+  }, []);
+  return (
+    <div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+        {data?.out?.slice(0, 10)?.map((item) => {
+          return (
+            <Paper
+              style={{
+                padding: 15,
+                background: "white",
+                margin: "10px 10px",
+                justifyContent: "space-between",
+                cursor: "pointer",
+                fontSize: "14px",
+                width: "100px",
+                height: "100px",
+              }}
+            >
+              {/* <div>{item.image_url}</div> */}
+              <img
+                alt={item.image_url}
+                src={item.image_url}
+                style={{ width: "100px", height: "60px" }}
+              />
+            </Paper>
+          );
+        })}
+      </div>
+    </div>
   );
 };
+
+export const Materials = () => {
+  const [getAllProducts, { data }] = useGetHomePageMutation();
+
+  useEffect(() => {
+    getAllProducts({});
+  }, []);
+  return (
+    <div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+        {data?.out?.slice(0, 10)?.map((item) => {
+          return (
+            <Paper
+              style={{
+                padding: 15,
+                background: "white",
+                margin: "10px 10px",
+                justifyContent: "space-between",
+                cursor: "pointer",
+                fontSize: "14px",
+                width: "100px",
+                height: "100px",
+              }}
+            >
+              {/* <div>{item.image_url}</div> */}
+              <img
+                alt={item.image_url}
+                src={item.image_url}
+                style={{ width: "100px", height: "60px" }}
+              />
+            </Paper>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
 
 export const Orders = () => {
   return (
