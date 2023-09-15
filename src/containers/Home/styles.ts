@@ -16,6 +16,11 @@ const styles = {
     },
     contentWrapper: { display: 'flex' }
   },
+  ratingstar: {
+    height: '12px',
+    width: '12px',
+    marginRight: '2px',
+  },
   card: {
     display: 'flex',
     // justifyContent: 'space-around',

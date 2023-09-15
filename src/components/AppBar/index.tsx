@@ -1,8 +1,10 @@
 import { AppBar, Box, IconButton, Toolbar } from '@mui/material';
 import styles from './styles';
 import { ROUTES } from '@Constants/routes';
-import { SearchIcon, NotificationIcon, UserImage } from '@assets/icons';
+import { SearchIcon } from '@assets/icons';
 import { useNavigate } from 'react-router-dom';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const FAQPage = () => {
   // states
@@ -30,16 +32,16 @@ const FAQPage = () => {
             )} */}
           </Box>
           <Box sx={styles.actionWrapper}>
-            <IconButton onClick={() => handleSearchNavigation()} disableRipple>
+            {/* <IconButton onClick={() => handleSearchNavigation()} disableRipple>
               <SearchIcon />
-            </IconButton>
+            </IconButton> */}
 
             <IconButton sx={styles.iconButton} disableRipple onClick={() => navigate(ROUTES.EXPLORE)}>
-              <NotificationIcon />
+              <NotificationsIcon style={{color: '#40798C'}}/>
             </IconButton>
 
-            <IconButton sx={styles.iconButton} disableRipple onClick={() => navigate(ROUTES.EXPLORE)}>
-              <UserImage />
+            <IconButton sx={styles.iconButton} disableRipple>
+             <ShoppingCartIcon style={{color: '#40798C'}} />
             </IconButton>
           </Box>
         </Toolbar>

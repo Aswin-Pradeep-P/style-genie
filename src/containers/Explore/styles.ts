@@ -17,6 +17,7 @@ const styles = {
     width: '48.5%',
     marginBottom: '17px',
     position: 'relative',
+    marginLeft: '5px'
   },
   image: {
     width: '95%',

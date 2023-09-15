@@ -23,6 +23,8 @@ import { ReactComponent as LoginStep1 } from './LoginStep1.svg';
 import { ReactComponent as LoginStep2 } from './LoginStep2.svg';
 import { ReactComponent as LoginStep3 } from './LoginStep3.svg';
 import { ReactComponent as ArrowForward } from './arrow-forward.svg';
+import { ReactComponent as Orders } from './orders.svg';
+import { ReactComponent as Star } from './ratingStar.svg';
 
 export {
     ErrorIcon,
@@ -47,5 +49,7 @@ export {
     LoginStep1,
     LoginStep2,
     LoginStep3,
-    ArrowForward
+    ArrowForward,
+    Orders,
+    Star
 };
