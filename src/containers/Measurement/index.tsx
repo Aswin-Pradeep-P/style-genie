@@ -3,9 +3,11 @@ import { CloseIcon } from '@assets/icons';
 import { AppBar, Loader } from '@Components/index';
 import { Box, Button, IconButton, TextField } from '@mui/material';
 import { uploadImageFile } from '@Utils/s3Service';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
 import styles from './styles';
+import { useGetMeasurementsMutation } from '@Containers/Home/apiSlice';
+import LocalStorage from '@Utils/storage';
 
 enum BodyParts {
   Shoulder = 'Shoulder',
@@ -38,12 +40,35 @@ const Measurement = () => {
     [BodyParts.Knee]: ''
   });
   const [overlay, setOverlay] = useState(false);
+  const [height, setHeight] = useState();
   const [selectedStep, setSelectedStep] = useState(SelectedStep.FRONT_VIEW);
   const [imageData, setImageData] = useState({
     [SelectedStep.FRONT_VIEW]: null,
     [SelectedStep.SIDE_VIEW]: null,
   });
   const [file, setFile] = useState(null);
+  const [getProfile, {data}] = useGetMeasurementsMutation()
+
+  useEffect(() => {
+    const id =  LocalStorage.getItem('genie-user-id');
+    setTimeout(() => {
+     getProfile({id});
+    }, 500);
+   }, [])
+
+   useEffect(() => {
+    if(data){
+      setDimensionFromApi({
+        data: {
+          measurement: data.measurement[0]
+        }
+      })
+    }
+   }, [data])
+
+   const handleHeightChange = (e) => {
+    setHeight(e.target.value)
+   }
 
   const getOverlay = () => {
     return (
@@ -132,7 +157,9 @@ const Measurement = () => {
     setOverlay(false);
 
     setIsLoading(true);
-    uploadImageFile(file, (res) => { 
+    console.log('entered height .......', height);
+    
+    uploadImageFile(file, height, (res) => { 
       setDimensionFromApi(res);
       setIsLoading(false)
     }, () => { setIsLoading(false) })
@@ -149,6 +176,17 @@ const Measurement = () => {
       <AppBar />
       <div>Measurement</div>
       {overlay && getOverlay()}
+      <div style={{ position: 'absolute', top: 231, left: 80 }}>
+      <TextField
+            onChange={handleHeightChange}
+            variant="standard"
+            size="small"
+            style={{ width: 300 }}
+            label={'Enter your height(cm) to get accurate results'}
+            value={height}
+          />
+      </div>
+     
       {isLoading && <Loader />}
       <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', background: 'white' }}>
         <div style={{ position: 'absolute', top: 71, left: 96 }}>

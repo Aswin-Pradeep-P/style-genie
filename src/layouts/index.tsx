@@ -23,6 +23,10 @@ import StyleEditor from "@Containers/StyleEditor/StyleEditor";
 import AIEnhancer from "@Containers/AIEnhancer/AIEnhancer";
 import { useLoginMutation } from "@Containers/Home/apiSlice";
 import LocalStorage from "@Utils/storage";
+import DesignScanner from "@Containers/Designer/design-scanner";
+import { DesignerContextProvider } from "@Containers/Designer/designer-context";
+import { DesignVariations } from "@Containers/Designer/design-variations";
+import DesignPrompt from "@Containers/Designer/design-prompt";
 
 export const Layout = () => {
   const appBarRef = useRef(null);
@@ -51,60 +55,68 @@ export const Layout = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div style={styles.root}>
-      <div
-        style={{ position: "relative", paddingTop: height }}
-        className="h-full"
-      >
-        <Routes>
-          <Route path={ROUTES.HOME} element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path={ROUTES.LOGIN} element={<Login />} />
-          <Route path={ROUTES.CATEGORY} element={<CategoryPage />} />
-          <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
-          <Route path={ROUTES.EXPLORE} element={<ExplorePage />} />
-          <Route path={ROUTES.EXPLORE_CATEGORY} element={<ExplorePage />} />
-          <Route path={ROUTES.EXPLORE_SEARCH} element={<ExplorePage />} />
-          <Route
-            path={ROUTES.FAQS}
-            element={<ProtectedRoute Component={FAQPage} />}
-          />
-          <Route
-            path={ROUTES.FAQS}
-            element={<ProtectedRoute Component={FAQPage} />}
-          />
-          <Route path={ROUTES.ALL} element={<NotFound />} />
-          <Route path={ROUTES.DESIGNER_SIGNUP} element={<DesignerSignup />} />
-          <Route path={ROUTES.DESIGNER_HOME} element={<DesignerHome />} />
-          <Route path={ROUTES.CAPTURE_IMAGE} element={<ImageCapture />} />
-          <Route path={ROUTES.MEASUREMENT} element={<Measurement />} />
-          <Route path={ROUTES.OUTFIT_DETAILS} element={<OutfitDetails />} />
-          <Route path={ROUTES.STYLE_EDITOR} element={<StyleEditor />} />
-          <Route path={ROUTES.AI_ENHANCER} element={<AIEnhancer />} />
-        </Routes>
-      </div>
-      <Modal
-        style={styles.modalContainer}
-        open={open}
-        closeAfterTransition
-        onClose={handleClose}
-        slots={{ backdrop: Backdrop }}
-        slotProps={{
-          backdrop: {
-            sx: { left: "unset", right: "unset", width: "450px" },
-            timeout: 500,
-          },
-        }}
-      >
-        <Fade in={open}>
-          <Box sx={styles.modalStyleContainer}>
-            <CloseIcon style={styles.modalClose} onClick={handleClose} />
-            <Box sx={styles.modalStyle}>
-              <div>TODO</div>
+    <DesignerContextProvider>
+      <div style={styles.root}>
+        <div
+          style={{ position: "relative", paddingTop: height }}
+          className="h-full"
+        >
+          <Routes>
+            <Route path={ROUTES.HOME} element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path={ROUTES.LOGIN} element={<Login />} />
+            <Route path={ROUTES.CATEGORY} element={<CategoryPage />} />
+            <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+            <Route path={ROUTES.EXPLORE} element={<ExplorePage />} />
+            <Route path={ROUTES.EXPLORE_CATEGORY} element={<ExplorePage />} />
+            <Route path={ROUTES.EXPLORE_SEARCH} element={<ExplorePage />} />
+            <Route
+              path={ROUTES.FAQS}
+              element={<ProtectedRoute Component={FAQPage} />}
+            />
+            <Route
+              path={ROUTES.FAQS}
+              element={<ProtectedRoute Component={FAQPage} />}
+            />
+            <Route path={ROUTES.ALL} element={<NotFound />} />
+            <Route path={ROUTES.DESIGNER_SIGNUP} element={<DesignerSignup />} />
+            <Route path={ROUTES.DESIGNER_HOME} element={<DesignerHome />} />
+            <Route path={ROUTES.CAPTURE_IMAGE} element={<ImageCapture />} />
+            <Route path={ROUTES.MEASUREMENT} element={<Measurement />} />
+            <Route path={ROUTES.OUTFIT_DETAILS} element={<OutfitDetails />} />
+            <Route path={ROUTES.STYLE_EDITOR} element={<StyleEditor />} />
+            <Route path={ROUTES.DESIGN_PREVIEW} element={<DesignScanner />} />
+            <Route path={ROUTES.AI_ENHANCER} element={<AIEnhancer />} />
+            <Route
+              path={ROUTES.DESIGN_VARIATIONS}
+              element={<DesignVariations />}
+            />
+            <Route path={ROUTES.DESIGN_PROMPT} element={<DesignPrompt />} />
+          </Routes>
+        </div>
+        <Modal
+          style={styles.modalContainer}
+          open={open}
+          closeAfterTransition
+          onClose={handleClose}
+          slots={{ backdrop: Backdrop }}
+          slotProps={{
+            backdrop: {
+              sx: { left: "unset", right: "unset", width: "450px" },
+              timeout: 500,
+            },
+          }}
+        >
+          <Fade in={open}>
+            <Box sx={styles.modalStyleContainer}>
+              <CloseIcon style={styles.modalClose} onClick={handleClose} />
+              <Box sx={styles.modalStyle}>
+                <div>TODO</div>
+              </Box>
             </Box>
-          </Box>
-        </Fade>
-      </Modal>
-    </div>
+          </Fade>
+        </Modal>
+      </div>
+    </DesignerContextProvider>
   );
 };

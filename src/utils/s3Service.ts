@@ -1,5 +1,6 @@
 import AWS from 'aws-sdk';
 import axios from "axios";
+import LocalStorage from './storage';
 
 
 const userProfileId = '6504257f3914baa6e1a6e147'
@@ -52,8 +53,10 @@ const params = {
   });
 }
 
-export const uploadImageFile = async (file: any, onSuccess: Function, onError: Function) => {
+export const uploadImageFile = async (file: any,height: number, onSuccess: Function, onError: Function) => {
   const s3 = new AWS.S3();  
+  const id =  LocalStorage.getItem('genie-user-id');
+  const userProfileId = id;
   
   const params = {
       Bucket: 'style-genie',
@@ -70,6 +73,7 @@ export const uploadImageFile = async (file: any, onSuccess: Function, onError: F
           ,{
               "front_image_url": `https://style-genie.s3.ap-south-1.amazonaws.com/measurements/${userProfileId}`,
               "side_image_url": "def",
+              "actual_height": Number(height || 165),
               "userProfile": userProfileId
           })
             .then((response) => {

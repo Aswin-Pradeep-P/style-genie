@@ -1,5 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, Dispatch, FC, SetStateAction, useContext, useState } from 'react';
+import {
+  createContext,
+  Dispatch,
+  FC,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 
 export const DesignerContext = createContext<{
   name: string;
@@ -20,39 +27,45 @@ export const DesignerContext = createContext<{
   setBankAccountNumber: Dispatch<SetStateAction<string>>;
   bankIfscCode: string;
   setBankIfscCode: Dispatch<SetStateAction<string>>;
+  activeTab: number;
+  setActiveTab: Dispatch<SetStateAction<number>>;
 }>({
-  name: '',
+  name: "",
   setName: () => {},
-  email: '',
+  email: "",
   setEmail: () => {},
-  contact: '',
+  contact: "",
   setContact: () => {},
-  instagramLink: '',
+  instagramLink: "",
   setInstagramLink: () => {},
-  googleMapLink: '',
+  googleMapLink: "",
   setGoogleMapLink: () => {},
-  profileBio: '',
+  profileBio: "",
   setProfileBio: () => {},
-  bankAccountHolderName: '',
+  bankAccountHolderName: "",
   setBankAccountHolderName: () => {},
-  bankAccountNumber: '',
+  bankAccountNumber: "",
   setBankAccountNumber: () => {},
-  bankIfscCode: '',
-  setBankIfscCode: () => {}
+  bankIfscCode: "",
+  setBankIfscCode: () => {},
+  activeTab: 0,
+  setActiveTab: () => {},
 });
 
 export const DesignerContextProvider: FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [contact, setContact] = useState('');
-  const [instagramLink, setInstagramLink] = useState('');
-  const [googleMapLink, setGoogleMapLink] = useState('');
-  const [profileBio, setProfileBio] = useState('');
-  const [bankAccountHolderName, setBankAccountHolderName] = useState('');
-  const [bankAccountNumber, setBankAccountNumber] = useState('');
-  const [bankIfscCode, setBankIfscCode] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contact, setContact] = useState("");
+  const [instagramLink, setInstagramLink] = useState("");
+  const [googleMapLink, setGoogleMapLink] = useState("");
+  const [profileBio, setProfileBio] = useState("");
+  const [bankAccountHolderName, setBankAccountHolderName] = useState("");
+  const [bankAccountNumber, setBankAccountNumber] = useState("");
+  const [bankIfscCode, setBankIfscCode] = useState("");
+
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <DesignerContext.Provider
@@ -74,7 +87,9 @@ export const DesignerContextProvider: FC<{
         bankAccountNumber,
         setBankAccountNumber,
         bankIfscCode,
-        setBankIfscCode
+        setBankIfscCode,
+        activeTab,
+        setActiveTab,
       }}
     >
       {children}

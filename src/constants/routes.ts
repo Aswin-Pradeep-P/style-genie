@@ -14,8 +14,12 @@ export enum ROUTES {
   CAPTURE_IMAGE = '/capture-image',
   MEASUREMENT = '/measurement',
   OUTFIT_DETAILS = '/outfit-details',
-  STYLE_EDITOR = '/style-editor',
-  AI_ENHANCER = '/ai-enhancer'
+  AI_ENHANCER = '/ai-enhancer',
+  STYLE_EDITOR='/style-editor',
+  MEASUREMENT_DETAILS = '/measurement-details',
+  DESIGN_PREVIEW = '/designer-home/design-preview',
+  DESIGN_VARIATIONS = '/designer-home/design-preview/101/design-variations',
+  DESIGN_PROMPT = '/designer-home/design-prompt',
 }
 
 export const PUBLIC_ROUTES_REDIRECT = [

@@ -40,8 +40,14 @@ const profileApis = baseApi.injectEndpoints({
         method: RequestTypes.GET
       })
     }),
+    getMeasurements: builder.mutation({
+      query: (payload) => ({
+        url: `/api/user-measurement?id=${payload.id}`,
+        method: RequestTypes.GET
+      })
+    }),
   })
 });
 
 
-export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation, useLoginMutation, useGetProfileMutation } = profileApis;
+export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation, useLoginMutation, useGetProfileMutation, useGetMeasurementsMutation } = profileApis;
