@@ -11,9 +11,9 @@ import { useGetProfileMutation } from './apliSlice';
 import Footer from '@Components/Footer';
 
 const imageData = [
-  'https://assets.style-genie.asia/wp-content/uploads/2023/09/11175735/NM-PRC-92-STR-23-SEP-317-LTPINK-1.webp',
-  'https://assets.style-genie.asia/wp-content/uploads/2023/09/04091311/NM-PRC-83-DRS-23-SEP-2393-WHITE-1.webp',
-  'https://assets.style-genie.asia/wp-content/uploads/2023/09/10144826/NM-PRC-43-SKT-23-SEP-178-BLACK-3.webp'
+  'https://assets.newme.asia/wp-content/uploads/2023/09/11175735/NM-PRC-92-STR-23-SEP-317-LTPINK-1.webp',
+  'https://assets.newme.asia/wp-content/uploads/2023/09/04091311/NM-PRC-83-DRS-23-SEP-2393-WHITE-1.webp',
+  'https://assets.newme.asia/wp-content/uploads/2023/09/10144826/NM-PRC-43-SKT-23-SEP-178-BLACK-3.webp'
 ];
 
 const Home = () => {

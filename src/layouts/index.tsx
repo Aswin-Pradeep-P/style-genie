@@ -11,7 +11,6 @@ import FAQPage from '@Containers/FAQPage';
 import CategoryPage from '@Containers/Category';
 import ProfilePage from '@Containers/Profile';
 import ExplorePage from '@Containers/Explore';
-import DesignerHome from '@Containers/DesignerHome';
 
 import { ProtectedRoute } from './ProtectedRoute';
 import styles from './styles';
@@ -32,7 +31,7 @@ export const Layout = () => {
 
   return (
     <div style={styles.root}>
-      <div style={{ position: 'relative', height: `calc(100vh - ${height}`, paddingTop: height }}>
+      <div style={{ position: 'relative', paddingTop: height }}>
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path='/home' element={<Home />} />
@@ -43,7 +42,6 @@ export const Layout = () => {
           {/* Protected routes */}
           <Route path={ROUTES.FAQS} element={<ProtectedRoute Component={FAQPage} />} />
           <Route path={ROUTES.ALL} element={<NotFound />} />
-          <Route path={ROUTES.DESIGNER_HOME} element={<DesignerHome />} />
         </Routes>
       </div>
       <Modal
