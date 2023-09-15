@@ -1,44 +1,28 @@
-import { ChevronLeft, ChevronRight } from "@assets/icons";
+import { ChevronLeft, ChevronRight, UserIcon } from "@assets/icons";
 import { ModalImage } from "@assets/images";
 import { useState } from "react";
+import Logo from "@assets/icons/StyleGenieLogo.png";
+import { Box } from "@mui/material";
+import styles from "@Layouts/styles";
 
-const ImageEditor = () => {
+const StyleEditor = () => {
   const editorTools = [
-    {
-      type: "fit",
-      label: "Fit",
-
-      options: [
-        {
-          label: "Full Sleeve",
-          imgLabel: "Capsleeve.jpg",
-        },
-        {
-          label: "Cap Sleeve",
-          imgLabel: "Capsleeve.jpg",
-        },
-        {
-          label: "DeepV",
-          imgLabel: "DeepV.jpg",
-        },
-      ],
-    },
     {
       type: "neckline",
       label: "NeckLine",
 
       options: [
         {
-          label: "Full Sleeve",
-          imgLabel: "Capsleeve.jpg",
-        },
-        {
-          label: "Cap Sleeve",
-          imgLabel: "Capsleeve.jpg",
-        },
-        {
-          label: "DeepV",
+          label: "Deep V",
           imgLabel: "DeepV.jpg",
+        },
+        {
+          label: "Round Neck",
+          imgLabel: "RoundNeck.jpg",
+        },
+        {
+          label: "High Collar",
+          imgLabel: "HighCollar.jpg",
         },
       ],
     },
@@ -48,15 +32,15 @@ const ImageEditor = () => {
       options: [
         {
           label: "Full Sleeve",
-          imgLabel: "Capsleeve.jpg",
+          imgLabel: "FullSleeve.jpg",
         },
         {
           label: "Cap Sleeve",
           imgLabel: "Capsleeve.jpg",
         },
         {
-          label: "DeepV",
-          imgLabel: "DeepV.jpg",
+          label: "Sleeveless",
+          imgLabel: "Sleeveless.jpg",
         },
       ],
     },
@@ -66,15 +50,34 @@ const ImageEditor = () => {
 
       options: [
         {
-          label: "Full Sleeve",
+          label: "Above Knee",
+          imgLabel: "AboveKneeLength.jpg",
+        },
+        {
+          label: "Knee Length",
+          imgLabel: "KneeLength.jpg",
+        },
+        {
+          label: "Below Knee",
+          imgLabel: "BelowKneeLength.jpg",
+        },
+      ],
+    },
+    {
+      type: "fit",
+      label: "Fit",
+
+      options: [
+        {
+          label: "Loose",
           imgLabel: "Capsleeve.jpg",
         },
         {
-          label: "Cap Sleeve",
+          label: "Regular",
           imgLabel: "Capsleeve.jpg",
         },
         {
-          label: "DeepV",
+          label: "Tight",
           imgLabel: "DeepV.jpg",
         },
       ],
@@ -90,42 +93,53 @@ const ImageEditor = () => {
   };
 
   return (
-    <div className="h-full min-h-screen flex flex-col   justify-center items-center pt-4 px-4 ">
-      <div className=" flex justify-between items-center bg-[#70a9a1] mt-16 rounded-md text-center text-lg font-semibold text-white border p-3 w-full ">
-        <button onClick={handlePrev} disabled={editorToolIndex <= 0}>
-          <ChevronLeft />
-        </button>
-        {editorTools[editorToolIndex].label}
-        <button
-          onClick={handleNext}
-          disabled={editorToolIndex >= editorTools.length - 1}
-        >
-          <ChevronRight />
-        </button>
-      </div>
-      <ModalImage className=" object-fit my-12 w-full" />
+    <Box sx={[styles.root]}>
+      <div className="h-full bg-white flex flex-col    items-center pb-4 px-4 ">
+        <header className="flex w-full items-center justify-between h-[100px] p-5">
+          <img src={Logo} alt="StyleGenie" className="h-[50px]" />
+          <UserIcon className="bg-[#40798C] rounded-full text-blue-2" />
+        </header>
+        <div className=" flex justify-between items-center bg-[#1F363D] rounded-md text-center text-lg font-semibold text-white border p-3 w-full ">
+          <button onClick={handlePrev} disabled={editorToolIndex <= 0}>
+            <ChevronLeft />
+          </button>
+          {editorTools[editorToolIndex].label}
+          <button
+            onClick={handleNext}
+            disabled={editorToolIndex >= editorTools.length - 1}
+          >
+            <ChevronRight />
+          </button>
+        </div>
+        <ModalImage className=" object-fit my-6 w-full" />
 
-      <div className="flex  w-full justify-center gap-4 ">
-        {editorTools[editorToolIndex].options.map((option, i) => (
-          <div key={i}>
-            <button className="border border-[#70a9a1]  rounded-md ">
-              <img
-                src={`/assets/icons/${option.imgLabel}`}
-                alt="styles"
-                className="w-16 h-20 object-fill"
-              />
-            </button>
-            <div className="text-center text-sm text-[#70a9a1] mt-2">
-              {option.label}
+        <div className="flex  w-full justify-center gap-4 ">
+          {editorTools[editorToolIndex].options.map((option, i) => (
+            <div key={i}>
+              <button className="border border-[#40798C]  rounded-md ">
+                <img
+                  src={`/assets/icons/${option.imgLabel}`}
+                  alt="styles"
+                  className="w-20 h-[88px] object-fill"
+                />
+              </button>
+              <div className="text-center font-semibold text-sm text-[#40798C] mt-1">
+                {option.label}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className="flex justify-between w-full mt-6 max-w-[450px] fixed bottom-0 bg-white p-4 border-t  ">
+          <button className="py-3 px-6   bg-[#1F363D] text-white rounded-md">
+            AI Enhancements
+          </button>
+          <button className="   py-3 px-12  bg-[#1F363D] text-white rounded-md">
+            Checkout
+          </button>
+        </div>
       </div>
-      <button className="flex justify-center items-center mt-6 w-[300px] p-4 px-6 bg-[#40798C] text-white rounded-md">
-        Proceed to checkout
-      </button>
-    </div>
+    </Box>
   );
 };
 
-export default ImageEditor;
+export default StyleEditor;

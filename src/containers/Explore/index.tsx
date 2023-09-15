@@ -6,10 +6,11 @@ import Footer from '@Components/Footer';
 import AppBar from '@Components/AppBar';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useGetCategoryItemsMutation, useGetHomePageMutation } from '@Containers/Home/apiSlice';
 import { useEffect, useState } from 'react';
 import { isNonEmptyString } from '@Utils/checks';
+
 
 const imageData = [
   'https://i.pinimg.com/564x/76/eb/9f/76eb9ff45025b7b7e054f67d8a7fd947.jpg',
@@ -48,7 +49,6 @@ const imageData = [
 
 const FAQPage = () => {
   const {type, search} = useParams();
-  console.log('type ', type);
 
   const [products, setProducts] = useState(imageData);
   const [getProducts, productsData] = useGetCategoryItemsMutation();
@@ -56,12 +56,13 @@ const FAQPage = () => {
 
   useEffect(() => {
     if (type && isNonEmptyString(type)) {
-      getProducts({type})
+      getProducts({ type });
     } else {
-      getAllProducts({})
+      getAllProducts({});
     }
-   
-  }, [type])
+  }, [type]);
+
+  console.log("productsData ", productsData);
 
   useEffect(() => {
     if (search) {
@@ -81,7 +82,10 @@ const FAQPage = () => {
   console.log('data ', data?.out);
   console.log('products ', products);
 
-
+  const navigate = useNavigate();
+  const handleOutfitOnClick = () => {
+    navigate("/style-editor");
+  };
   return (
     <Box sx={[styles.root]}>
       <AppBar />
@@ -90,20 +94,38 @@ const FAQPage = () => {
         {products?.map((item) => {
           return (
             <Grid item={true} sx={styles.productCard}>
-              <Box>
+              <Box onClick={handleOutfitOnClick}>
                 <img src={item.image_url} alt="image" style={styles.image} />
               </Box>
-              <Box sx={{ background: 'white', borderBottomLeftRadius: '5px', borderBottomRightRadius: '5px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '5px' }}>
+              <Box
+                sx={{
+                  background: "white",
+                  borderBottomLeftRadius: "5px",
+                  borderBottomRightRadius: "5px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    padding: "5px",
+                  }}
+                >
                   <span>
                     <CurrencyRupeeOutlinedIcon fontSize="small" />{' '}
                     <span style={{ fontSize: '14px', color: '#40798C' }}>{item.default_price}</span>
                   </span>
-                  <span style={{cursor: 'pointer'}}>
+                  <span style={{ cursor: "pointer" }}>
                     <FavoriteBorderOutlinedIcon />
                   </span>
                 </div>
-                <div style={{padding: '5px 10px 10px 10px', fontSize: '13px', color: 'gray'}}>
+                <div
+                  style={{
+                    padding: "5px 10px 10px 10px",
+                    fontSize: "13px",
+                    color: "gray",
+                  }}
+                >
                   {item.name}
                 </div>
               </Box>
@@ -111,10 +133,8 @@ const FAQPage = () => {
           );
         })}
       </Grid>
-      <div style={{ paddingBottom: '80px' }} />
-      <Box sx={styles.footerWrapper}>
-        <Footer />
-      </Box>
+      <div style={{ paddingBottom: "80px" }} />
+      <Footer />
     </Box>
   );
 };

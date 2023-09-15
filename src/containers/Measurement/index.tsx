@@ -1,9 +1,10 @@
 // @ts-nocheck
-import { AppBar } from '@Components/index';
+import { AppBar, Loader } from '@Components/index';
 import { ROUTES } from '@Constants/routes';
 import { Box, Button, TextField } from '@mui/material';
-import { ChangeEvent, MouseEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { uploadImageFile } from '@Utils/s3Service';
+import { useState, useRef } from 'react';
+import { useNavigate,useLocation } from 'react-router-dom';
 import styles from './styles';
 
 enum BodyParts {
@@ -17,7 +18,11 @@ enum BodyParts {
   Knee = 'Knee',
 }
 const Measurement = () => {
+  const inputRef = useRef(null);
   const navigator = useNavigate();
+  const {state} = useLocation();
+  const [isLoading, setIsLoading] = useState(false);
+  console.log(state);
   const [dimensions, setDimensions] = useState({
     [BodyParts.Neck]: null,
     [BodyParts.Shoulder]: null,
@@ -33,10 +38,26 @@ const Measurement = () => {
     console.log(dimensions);
   };
 
+  const handleFileChange = event => {
+    const fileObj = event.target.files && event.target.files[0];
+    if (!fileObj) {
+      return;
+    }
+
+    setIsLoading(true);
+    uploadImageFile(fileObj, () => { setIsLoading(false)}, () => { setIsLoading(false) })
+  }
+
+  const handleFileClick = () => {
+    // 👇️ open file input box on click of another element
+    inputRef.current.click();
+  };
+
   return (
     <Box sx={[styles.root]}>
       <AppBar />
       <div>Measurement</div>
+      <Loader isLoading={true}  />
       <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
         <div style={{ position: 'absolute', top: 111, left: 96 }}>
           <TextField
@@ -120,6 +141,21 @@ const Measurement = () => {
         </div>
         <img style={{ height: 700 }} src="/assets/icons/blueprint.svg" alt="blueprint" />
       </div>
+      <Button
+        size="large"
+        onClick={handleFileClick}
+        style={{ background: '#fff', border: '1px solid #9EC1A3' }}
+        variant="contained"
+        color="primary"
+      >
+        Upload Picture
+        <input
+        style={{display: 'none'}}
+        ref={inputRef}
+        type="file"
+        onChange={handleFileChange}
+      />
+      </Button>
       <Button
         size="large"
         onClick={() => navigator(ROUTES.CAPTURE_IMAGE)}
