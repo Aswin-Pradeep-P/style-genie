@@ -20,7 +20,7 @@ const DesignerSignup = () => {
           {step === 1 && <FirstStepForm onNextClick={() => setStep(2)} />}
           {step === 2 && <SecondStepForm onPreviousClick={() => setStep(1)} onNextClick={() => setStep(3)} />}
           {step === 3 && (
-            <ThirdStepForm onPreviousClick={() => setStep(2)} onNextClick={() => navigate(ROUTES.DESIGNER_DASHBOARD)} />
+            <ThirdStepForm onPreviousClick={() => setStep(2)} onNextClick={() => navigate(ROUTES.DESIGNER_HOME)} />
           )}
         </div>
       </Box>

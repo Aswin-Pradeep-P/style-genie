@@ -29,6 +29,7 @@ import { ReactComponent as DesignsIcon } from "./DesignsIcon.svg";
 import { ReactComponent as MaterialsIcon } from "./MaterialsIcon.svg";
 import { ReactComponent as OrdersIcon } from "./OrdersIcon.svg";
 import { ReactComponent as MagicIcon } from "./MagicIcon.svg";
+import { ReactComponent as UserIcon } from "./userIcon.svg";
 
 export {
     ErrorIcon,
@@ -60,4 +61,5 @@ export {
   MaterialsIcon,
   OrdersIcon,
   MagicIcon,
+  UserIcon,
 };
