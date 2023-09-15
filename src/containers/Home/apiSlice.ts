@@ -15,7 +15,13 @@ const profileApis = baseApi.injectEndpoints({
         method: RequestTypes.GET
       })
     }),
+    getOutfitDetails: builder.mutation({
+      query: (payload) => ({
+        url: `/api/default-options?id=${payload.id}`,
+        method: RequestTypes.GET
+      })
+    }),
   })
 });
 
-export const { useGetHomePageMutation, useGetCategoryItemsMutation } = profileApis;
+export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation } = profileApis;

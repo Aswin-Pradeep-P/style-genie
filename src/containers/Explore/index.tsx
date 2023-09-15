@@ -69,8 +69,9 @@ const FAQPage = () => {
 
   const navigate = useNavigate();
   const handleOutfitOnClick = () => {
-    navigate("/style-editor");
+    navigate("/outfit-details");
   };
+  console.log(imageData)
   return (
     <Box sx={[styles.root]}>
       <AppBar />
