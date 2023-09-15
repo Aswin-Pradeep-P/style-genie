@@ -48,7 +48,7 @@ const imageData = [
   "https://i.pinimg.com/564x/c8/26/d0/c826d05f91f2f1c682ca62504dc86be7.jpg",
   "https://i.pinimg.com/564x/88/5d/26/885d26e11277f28340f8511081dd4ffd.jpg",
   "https://i.pinimg.com/474x/eb/45/4a/eb454a065e558b7aeebc0c756d7dc4ee.jpg",
-].map((d) => ({ image_url: d, default_price: 1000, name: "Dummy Name" }));
+].map((d) => ({ image_url: d, default_price: 1000, name: "Dummy Name",_id:"123" }));
 
 const FAQPage = () => {
   const { type, search } = useParams();
@@ -86,8 +86,8 @@ const FAQPage = () => {
   console.log("products ", products);
 
   const navigate = useNavigate();
-  const handleOutfitOnClick = () => {
-    navigate("/outfit-details");
+  const handleOutfitOnClick = (id: string) => {
+    navigate(`/outfit-details/${id}`);
   };
   // if (isProductsLoading) return <Loader />;
   return (
@@ -98,7 +98,7 @@ const FAQPage = () => {
         {products?.map((item) => {
           return (
             <Grid item={true} sx={styles.productCard}>
-              <Box onClick={handleOutfitOnClick}>
+              <Box onClick={() => handleOutfitOnClick(item._id)}>
                 <img src={item.image_url} alt="image" style={styles.image} />
               </Box>
               <Box

@@ -13,7 +13,7 @@ export enum ROUTES {
   DESIGNER_HOME = '/designer-home/',
   CAPTURE_IMAGE = '/capture-image',
   MEASUREMENT = '/measurement',
-  OUTFIT_DETAILS = '/outfit-details',
+  OUTFIT_DETAILS = '/outfit-details/:id',
   AI_ENHANCER = '/ai-enhancer',
   STYLE_EDITOR='/style-editor',
   MEASUREMENT_DETAILS = '/measurement-details',
