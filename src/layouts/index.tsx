@@ -35,7 +35,7 @@ export const Layout = () => {
 
   return (
     <div style={styles.root}>
-      <div style={{ position: 'relative', height: `calc(100vh - ${height}`, paddingTop: height }}>
+      <div style={{ position: 'relative', paddingTop: height }}>
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path='/home' element={<Home />} />

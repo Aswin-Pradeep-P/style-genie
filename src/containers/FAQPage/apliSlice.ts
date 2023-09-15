@@ -3,7 +3,7 @@ import { RequestTypes } from '@Constants/api';
 
 const profileApis = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getProfile: builder.mutation({
+    getProfileTest: builder.mutation({
       query: () => ({
         url: '',
         method: RequestTypes.GET
@@ -12,4 +12,4 @@ const profileApis = baseApi.injectEndpoints({
   })
 });
 
-export const { useGetProfileMutation } = profileApis;
+export const { useGetProfileTestMutation } = profileApis;

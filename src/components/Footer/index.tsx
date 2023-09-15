@@ -5,7 +5,16 @@ import { AppBar, Toolbar, Box } from '@mui/material';
 import { IconButton } from '@mui/material';
 
 import { colors } from '@Constants/colors';
-import { HomeIcon, Category, Explore, Profile } from '@assets/icons';
+import {
+  HomeIcon,
+  Category,
+  Explore,
+  Profile,
+  CategoryActive,
+  HomeIconActive,
+  ExploreActive,
+  ProfileActive
+} from '@assets/icons';
 import { ROUTES } from '@Constants/routes';
 
 import styles from './styles';
@@ -30,21 +39,21 @@ const Footer: React.FC<{ currentPage?: string }> = ({ currentPage = '' }) => {
       label: 'Home',
       icon: <HomeIcon />,
       path: [ROUTES.HOME],
-      activeIcon: <HomeIcon />
+      activeIcon: <HomeIconActive />
     },
     {
       key: 'Category',
       label: 'Category',
       icon: <Category />,
       path: [ROUTES.CATEGORY],
-      activeIcon: <Category />
+      activeIcon: <CategoryActive />
     },
     {
       key: 'Explore',
       label: 'Explore',
       icon: <Explore />,
       path: [ROUTES.EXPLORE],
-      activeIcon: <Explore />
+      activeIcon: <ExploreActive />
     },
 
     {
@@ -52,7 +61,7 @@ const Footer: React.FC<{ currentPage?: string }> = ({ currentPage = '' }) => {
       label: 'Profile',
       icon: <Profile />,
       path: [ROUTES.PROFILE],
-      activeIcon: <Profile />
+      activeIcon: <ProfileActive />
     }
   ];
 
