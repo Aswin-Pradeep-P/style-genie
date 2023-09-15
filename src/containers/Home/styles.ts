@@ -6,13 +6,11 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: '100%',
-    backGroundColor: colors.DIM_GRAY
   },
   topBanners: {
     root: {
       display: 'flex',
       justifyContent: 'space-around',
-      backgroundColor: colors.PRIMARY_LIGHT,
       // width: '450px',
       height: '450px'
     },
@@ -21,7 +19,6 @@ const styles = {
   card: {
     display: 'flex',
     // justifyContent: 'space-around',
-    backgroundColor: colors.PRIMARY_LIGHT_2,
     width: '170px',
     height: '250px',
     marginRight: '5px'
