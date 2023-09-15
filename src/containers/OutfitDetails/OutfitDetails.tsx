@@ -1,8 +1,7 @@
 import Header from "@Components/Header/Header";
-import { AppBar, Footer, Loader } from "@Components/index";
+import { Loader } from "@Components/index";
 import { useGetOutfitDetailsMutation } from "@Containers/Home/apiSlice";
-import styles from "@Layouts/styles";
-import { Box } from "@mui/material";
+
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +16,11 @@ const OutfitDetails = () => {
     useGetOutfitDetailsMutation();
 
   const navigate = useNavigate();
-  const navigateToStyleEnhancement = () => {navigate('/style-editor')};
+  const navigateToStyleEnhancement = () => {
+    navigate("/style-editor", {
+      state: { outfit_imgSrc: outfitData?.out[0]?.image_url },
+    });
+  };
 
   useEffect(() => {
     getOutfitDetails({ id: "6503e8fde40d7addb33a5c80" });

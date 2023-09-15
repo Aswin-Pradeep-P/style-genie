@@ -21,7 +21,13 @@ const profileApis = baseApi.injectEndpoints({
         method: RequestTypes.GET
       })
     }),
+    getCustomize: builder.mutation({
+      query: (payload) => ({
+        url: `/api/user/customize/${payload.id}?neckline=${payload.neckline}`,
+        method: RequestTypes.GET
+      })
+    }),
   })
 });
 
-export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation } = profileApis;
+export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation } = profileApis;
