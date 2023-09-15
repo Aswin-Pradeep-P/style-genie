@@ -18,7 +18,10 @@ const OutfitDetails = () => {
   const navigate = useNavigate();
   const navigateToStyleEnhancement = () => {
     navigate("/style-editor", {
-      state: { outfit_imgSrc: outfitData?.out[0]?.image_url },
+      state: {
+        outfit_imgSrc: outfitData?.out[0]?.image_url,
+        outfitId: outfitData?.out[0]?._id.$oid,
+      },
     });
   };
 

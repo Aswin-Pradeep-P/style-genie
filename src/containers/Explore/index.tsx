@@ -79,7 +79,6 @@ const FAQPage = () => {
 
   useEffect(() => {
     if (data?.out?.length > 0) {
-      debugger;
       setProducts(data?.out);
     }
   }, [data]);
