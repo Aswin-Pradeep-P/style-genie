@@ -15,6 +15,7 @@ const styles = {
   },
   productCard: {
     position: 'relative',
+    marginLeft: '5px'
   },
   image: {
     height: '290px',

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import { Box, Grid, Paper } from '@mui/material';
 import styles from './styles';
@@ -5,8 +6,30 @@ import Footer from '@Components/Footer';
 import AppBar from '@Components/AppBar';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CurrencyRupeeOutlinedIcon from '@mui/icons-material/CurrencyRupeeOutlined';
+import { useParams } from 'react-router-dom';
+import { useGetCategoryItemsMutation, useGetHomePageMutation } from '@Containers/Home/apiSlice';
+import { useEffect } from 'react';
+import { isNonEmptyString } from '@Utils/checks';
 
 const FAQPage = () => {
+  const {type} = useParams();
+  console.log('type ', type);
+
+  const [getProducts, productsData] = useGetCategoryItemsMutation();
+  const [getAllProducts, allProductsData] = useGetHomePageMutation();
+
+  useEffect(() => {
+    if (type && isNonEmptyString(type)) {
+      getProducts({type})
+    } else {
+      getAllProducts({})
+    }
+   
+  }, [type])
+
+  console.log('productsData ', productsData);
+  
+  
   const imageData = [
     'https://i.pinimg.com/564x/76/eb/9f/76eb9ff45025b7b7e054f67d8a7fd947.jpg',
     'https://i.pinimg.com/564x/c8/26/d0/c826d05f91f2f1c682ca62504dc86be7.jpg',

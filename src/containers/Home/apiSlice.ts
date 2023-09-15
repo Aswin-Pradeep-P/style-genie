@@ -8,8 +8,14 @@ const profileApis = baseApi.injectEndpoints({
         url: `/api/outfit`,
         method: RequestTypes.GET
       })
-    })
+    }),
+    getCategoryItems: builder.mutation({
+      query: (payload) => ({
+        url: `/api/outfit?category=${payload.type}`,
+        method: RequestTypes.GET
+      })
+    }),
   })
 });
 
-export const { useGetHomePageMutation } = profileApis;
+export const { useGetHomePageMutation, useGetCategoryItemsMutation } = profileApis;
