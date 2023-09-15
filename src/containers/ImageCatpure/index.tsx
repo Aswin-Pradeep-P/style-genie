@@ -8,6 +8,9 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { uploadImage } from '@Utils/s3Service';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '@Constants/routes';
 
 const videoConstraints = {
   width: 448,
@@ -21,6 +24,7 @@ enum SelectedStep {
 }
 
 const ImageCapture = () => {
+  const navigator = useNavigate();
   const webcamRef = React.useRef(null);
   const [showOverlay, setShowOverlay] = useState(false);
   const [selectedStep, setSelectedStep] = useState(SelectedStep.FRONT_VIEW);
@@ -39,10 +43,13 @@ const ImageCapture = () => {
       if (selectedStep === SelectedStep.FRONT_VIEW) {
         setSelectedStep(SelectedStep.SIDE_VIEW);
       } else {
-        // Redirection logic here
+        uploadImage(imageData[selectedStep], (res: any) => {
+          navigator(ROUTES.MEASUREMENT, {state : {res}})
+        }, () => {
+          navigator(ROUTES.MEASUREMENT)
+        })
       }
     } else {
-      // Toas message here
     }
   };
 
