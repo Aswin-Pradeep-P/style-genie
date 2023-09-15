@@ -46,8 +46,15 @@ const profileApis = baseApi.injectEndpoints({
         method: RequestTypes.GET
       })
     }),
-  })
+    generateOutfits: builder.mutation({
+      query: (payload) => ({
+        url: '/api/designer/generate-from-text',
+        method: RequestTypes.POST,
+        body: payload
+      })
+    })
+  }),
 });
 
 
-export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation, useLoginMutation, useGetProfileMutation, useGetMeasurementsMutation } = profileApis;
+export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation, useLoginMutation, useGetProfileMutation, useGetMeasurementsMutation, useGenerateOutfitsMutation  } = profileApis;
