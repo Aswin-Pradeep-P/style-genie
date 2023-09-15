@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-smoothing: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.MuiAccordionSummary-content {
+  justify-content: space-between;
+  padding-right: 15px;
+}
+
+.MuiAccordion-root:before {
+  height: 0px !important;
+}
+
+.MuiAccordion-root.Mui-expanded {
+  margin: 0 !important;
+  margin-top: 4px !important;
+}
+
+.MuiRadio-root {
+  left: -10px;
+}
+
+.MuiCheckbox-root {
+  left: -10px;
+}
+
+.MuiFormHelperText-root {
+  background-color: white !important;
+  margin: 0 !important;
+  padding-top: 3px;
+  padding-right: 14px;
+  padding-bottom: 0;
+  padding-left: 14px;
+}
+
+textarea:focus-within {
+  outline: none;
+}
+
+textarea {
+  font-family: "Poppins", sans-serif;
+}
+
+.carousel-arrow-button {
+  display: flex;
+}
+
+@media screen and (max-width: 450px) {
+  .carousel-arrow-button {
+    display: none;
+  }
+}
+
+input {
+  -moz-font-smoothing: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* iframe {
+  display: none;
+} */
+
+#gokwik-modal-wrapper{
+  display: none;
+}
