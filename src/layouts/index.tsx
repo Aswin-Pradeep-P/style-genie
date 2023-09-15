@@ -15,6 +15,7 @@ import DesignerHome from '@Containers/DesignerHome';
 
 import { ProtectedRoute } from './ProtectedRoute';
 import styles from './styles';
+import ImageCapture from '@Containers/ImageCatpure';
 
 export const Layout = () => {
   const appBarRef = useRef(null);
@@ -44,6 +45,7 @@ export const Layout = () => {
           <Route path={ROUTES.FAQS} element={<ProtectedRoute Component={FAQPage} />} />
           <Route path={ROUTES.ALL} element={<NotFound />} />
           <Route path={ROUTES.DESIGNER_HOME} element={<DesignerHome />} />
+          <Route path={ROUTES.CAPTURE_IMAGE} element={<ImageCapture />} />
         </Routes>
       </div>
       <Modal
