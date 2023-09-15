@@ -16,6 +16,15 @@ const styles = {
     },
     contentWrapper: { display: 'flex' }
   },
+  search: {
+    // flex: 1,
+    outline: 'none',
+    fontSize: '16px',
+    border: '1px solid #1D6B46',
+    width: '90%',
+    borderRadius: '10px',
+    padding: '10px 20px'
+  },
   ratingstar: {
     height: '12px',
     width: '12px',

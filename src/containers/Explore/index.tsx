@@ -47,7 +47,7 @@ const imageData = [
 ].map((d) => ({ image_url: d, default_price: 1000, name: 'Dummy Name' }));
 
 const FAQPage = () => {
-  const {type} = useParams();
+  const {type, search} = useParams();
   console.log('type ', type);
 
   const [products, setProducts] = useState(imageData);
@@ -62,6 +62,13 @@ const FAQPage = () => {
     }
    
   }, [type])
+
+  useEffect(() => {
+    if (search) {
+      // search
+    }
+   
+  }, [search])
 
   useEffect(() => {
 

@@ -4,7 +4,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useNavigate } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { UserIcon } from "@assets/icons";
+import SearchIcon from '@mui/icons-material/Search';
 
 import Logo from "@assets/icons/StyleGenieLogo.png";
 
@@ -51,6 +51,9 @@ const FAQPage = ({ title = "" }) => {
           <img src={Logo} alt="StyleGenie" className="h-[50px]" />
         </div>
         <div>
+        {/* <IconButton sx={styles.iconButton} disableRipple>
+            <SearchIcon style={{ color: "#40798C" }} />
+          </IconButton> */}
           <IconButton sx={styles.iconButton} disableRipple>
             <NotificationsIcon style={{ color: "#40798C" }} />
           </IconButton>

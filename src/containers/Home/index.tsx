@@ -5,9 +5,12 @@ import styles from "./styles";
 import { AppBar, Footer } from "@Components/index";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRightIcon, Star } from "@assets/icons";
+import SearchIcon from '@mui/icons-material/Search';
 import { useGetHomePageMutation } from "./apiSlice";
 import { Carousel } from "react-responsive-carousel";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { colors } from "@Constants/colors";
+import { useNavigate } from "react-router-dom";
 
 const FAQPage = () => {
   // states
@@ -25,8 +28,11 @@ const FAQPage = () => {
 
   const containerRef = useRef<HTMLInputElement>(null);
 
+  const navigate = useNavigate();
+
   const [scrolling, setScrolling] = useState(false);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const [getHomepage, { data }] = useGetHomePageMutation();
 
@@ -95,6 +101,10 @@ const FAQPage = () => {
   const handleClick = (event: { preventDefault: () => void }) => {
     if (scrolling) event.preventDefault();
   };
+
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  }
 
   const showNextArrow = () =>
     (scrollLeft === 0 ||
@@ -177,9 +187,32 @@ const FAQPage = () => {
     );
   };
 
+  const handleCloseButton = () => {
+    setSearchTerm('');
+  };
+
+  const handleKeyDown = (event: any) => {
+    if (event.key === 'Enter') {
+      navigate(`/explore/${searchTerm}`)
+    }
+  };
+
   const renderCarousel = () => {
     return (
       <>
+      <div style={{width: '100%', display: 'flex', justifyContent: 'center', margin: '20px 0px', position: 'relative'}}>
+      <input
+        type="text"
+        style={styles.search}
+        placeholder="What are you looking for"
+        value={searchTerm}
+        onKeyDown={handleKeyDown}
+        onChange={handleInputChange}
+      />
+       {!searchTerm && <SearchIcon style={{ color: "#40798C", cursor: 'pointer', position: 'absolute', right: '30px', marginTop: '10px' }} onClick={handleCloseButton} />}
+       {searchTerm && <HighlightOffIcon style={{ color: "#40798C", cursor: 'pointer', position: 'absolute', right: '30px', marginTop: '10px' }} onClick={handleCloseButton} />}
+      </div>
+      
         <Carousel
           autoPlay={true}
           showIndicators={true}
@@ -212,7 +245,7 @@ const FAQPage = () => {
         <div style={{ marginTop: "100px" }} />
         {renderCarousel()}
         {renderTopBanners(1, "jpg")}
-        {renderCards()}
+        {/* {renderCards()} */}
         {renderTopBanners(2, "jpg")}
         <Box
           sx={{
