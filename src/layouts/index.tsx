@@ -43,7 +43,7 @@ export const Layout = () => {
           <Route path={ROUTES.CATEGORY} element={<CategoryPage />} />
           <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
           <Route path={ROUTES.EXPLORE} element={<ExplorePage />} />
-          {/* Protected routes */}
+          <Route path={ROUTES.EXPLORE_CATEGORY} element={<ExplorePage />} />
           <Route path={ROUTES.FAQS} element={<ProtectedRoute Component={FAQPage} />} />
           <Route path={ROUTES.ALL} element={<NotFound />} />
           <Route path={ROUTES.DESIGNER_SIGNUP} element={<DesignerSignup />} />

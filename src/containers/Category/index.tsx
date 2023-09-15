@@ -6,13 +6,16 @@ import AppBar from '@Components/AppBar';
 import { CATEGORY_DATA } from './config';
 import { WEB_URL } from '@Constants/config';
 import { ArrowRightIcon } from '@assets/icons';
-import { Params, createSearchParams } from 'react-router-dom';
+import { Params, createSearchParams, useNavigate } from 'react-router-dom';
 
 const cardColorArray = ['#E1F1FF66', '#FEE7E666', '#EDE8FF66', '#F9F2D766'];
 const colorArray = ['#BBD4EB88', '#EFC0BE88', '#CABFF188', '#F3E8C188'];
 
 const FAQPage = () => {
   // states
+  const navigate =useNavigate();
+
+  
 
   const NewRenderCategory = ({ item, color, backgroundColor }: any) => {
     const {
@@ -23,13 +26,12 @@ const FAQPage = () => {
       color: lineColor,
       background_color: backColor,
       click_event,
+      key,
       subCategories
     } = item;
     const params: Params = click_event?.params || {};
     const { category, subcategory, tag, sort_by } = params || {};
     const navigationParams = {
-      // ...(category && { product_cat: category || '' }),
-      // ...(subcategory && { subCategory: subcategory || '' }),
       ...(sort_by && { orderby: sort_by || '' })
     };
 
@@ -40,7 +42,7 @@ const FAQPage = () => {
         )}`;
 
     const handleButtonPress = () => {
-      //
+      navigate(`/explore/${key}`);
     };
 
     return (
