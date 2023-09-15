@@ -1,18 +1,32 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box } from '@mui/material';
 import styles from './styles';
 import { AppBar, Footer } from '@Components/index';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRightIcon } from '@assets/icons';
+import { useGetHomePageMutation } from './apiSlice';
 
 const FAQPage = () => {
   // states
 
-  const data = [1, 2, 3, 4, 5, 6];
+  const sampledata = [
+    'https://wforwoman.com/content/wp-content/uploads/2020/04/Ecru-Mandarin-Neck-Khadi-Kurta-1.jpg'
+  ];
 
   const containerRef = useRef<HTMLInputElement>(null);
 
   const [scrolling, setScrolling] = useState(false);
   const [scrollLeft, setScrollLeft] = useState(0);
+
+  const [getHomepage, {data}] = useGetHomePageMutation();
+
+  console.log('homepageData ', data);
+  
+
+  useEffect(() => {
+    getHomepage({});
+  }, [])
 
   const renderTopBanners = () => {
     return (
@@ -76,7 +90,7 @@ const FAQPage = () => {
     (scrollLeft === 0 ||
       (containerRef?.current &&
         containerRef?.current?.scrollWidth - containerRef?.current?.clientWidth - scrollLeft > 1)) &&
-    data?.length > 0;
+    sampledata?.length > 0;
 
   const renderCards = () => {
     return (
@@ -102,13 +116,15 @@ const FAQPage = () => {
             )}
             {showNextArrow() && (
               <Box className='carousel-arrow-button' sx={[styles.arrowLayout, { right: 0, position: 'absolute' }]}>
-                <Box onClick={handleNextClick} sx={[styles.arrowButton, { marginRight: '5px' }]}>
+                <Box onClick={handleNextClick} sx={[styles.arrowButton, { marginRight: '30px' }]}>
                   <ArrowRightIcon stroke='white' strokeWidth={2} style={{ width: '14px', height: '14px' }} />
                 </Box>
               </Box>
             )}
-            {data.map((item) => {
-              return <div key={item} style={styles.card} />;
+            {data?.out?.map((item: any) => {
+              return <div key={item} style={styles.card}>
+                <img src='https://wforwoman.com/content/wp-content/uploads/2020/04/Ecru-Mandarin-Neck-Khadi-Kurta-1.jpg' />
+              </div>
             })}
           </Box>
           {/* <Link href={getLink(linkData) ?? ''} style={styles.viewAllButton} onClick={onViewAllPress}>
@@ -125,10 +141,10 @@ const FAQPage = () => {
       <AppBar />
       {renderTopBanners()}
       {renderCards()}
-      {renderTopBanners()}
+      {/* {renderTopBanners()}
       {renderCards()}
       {renderTopBanners()}
-      {renderCards()}
+      {renderCards()} */}
       <Box sx={styles.footerWrapper}>
         <Footer />
       </Box>

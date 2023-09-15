@@ -7,7 +7,7 @@ import useWindowDimensions from '@Utils/useWindowDimensions';
 import { useState, CSSProperties, useEffect } from 'react';
 import BottomSheet from '@Components/BottomSheet';
 import { CloseButton } from '@assets/icons';
-import { useGetProfileMutation } from './apliSlice';
+import { useGetProfileTestMutation } from './apliSlice';
 import Footer from '@Components/Footer';
 
 const imageData = [
@@ -27,7 +27,7 @@ const Home = () => {
   const { isMobileView } = useWindowDimensions();
   const [openDrawer, setOpenDrawer] = useState(false);
 
-  const [getProfile] = useGetProfileMutation();
+  const [getProfile] = useGetProfileTestMutation();
 
   useEffect(() => {
     getProfile({});

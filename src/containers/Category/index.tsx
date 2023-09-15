@@ -69,7 +69,6 @@ const FAQPage = () => {
               sx={{
                 ...styles.arrow,
                 ...(subCategories && { transform: 'rotate(90deg)' }),
-                ...(open === title && subCategories && { transform: 'rotate(-90deg)' })
               }}
             >
               <ArrowRightIcon />

@@ -16,7 +16,7 @@ import { API_TAGS, RequestTypes } from '@Constants/api';
 const mutex = new Mutex();
 
 const fetchQ = fetchBaseQuery({
-  baseUrl: API_DOMAIN,
+  baseUrl: 'https://b481-103-181-238-106.ngrok-free.app/',
   prepareHeaders: async (headers) => {
     const accessToken = LocalStorage.getItem(Tokens.ACCESS_TOKEN);
 
