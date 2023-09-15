@@ -15,6 +15,19 @@ const profileApis = baseApi.injectEndpoints({
         method: RequestTypes.GET
       })
     }),
+    getOutfitDetails: builder.mutation({
+      query: (payload) => ({
+        url: `/api/outfit?id=${payload.id}`,
+        method: RequestTypes.GET
+      })
+    }),
+    getCustomize: builder.mutation({
+      query: (payload) => ({
+        url: `/api/user/customize/${payload.id}?neckline=${payload.neckline}`,
+        method: RequestTypes.GET
+      })
+    }),
+
     login: builder.mutation({
       query: () => ({
         url: `/api/login`,
@@ -36,4 +49,5 @@ const profileApis = baseApi.injectEndpoints({
   })
 });
 
-export const { useGetHomePageMutation, useGetCategoryItemsMutation, useLoginMutation, useGetProfileMutation, useGetMeasurementsMutation } = profileApis;
+
+export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation, useLoginMutation, useGetProfileMutation, useGetMeasurementsMutation } = profileApis;

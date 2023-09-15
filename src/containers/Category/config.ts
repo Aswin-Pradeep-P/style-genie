@@ -36,6 +36,7 @@ export const CATEGORY_DATA = [
     color: '#CABFF188',
     background_color: '#EDE8FF66',
   },
+
   {
     title: 'Bottoms',
     sub_title: 'Confidence starts with what you wear',

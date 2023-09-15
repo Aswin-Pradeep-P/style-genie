@@ -20,6 +20,7 @@ import Measurement from "@Containers/Measurement";
 import DesignerHome from "@Containers/Designer/designer-home";
 import OutfitDetails from "@Containers/OutfitDetails/OutfitDetails";
 import StyleEditor from "@Containers/StyleEditor/StyleEditor";
+import AIEnhancer from "@Containers/AIEnhancer/AIEnhancer";
 import { useLoginMutation } from "@Containers/Home/apiSlice";
 import LocalStorage from "@Utils/storage";
 import DesignScanner from "@Containers/Designer/design-scanner";
@@ -85,6 +86,7 @@ export const Layout = () => {
             <Route path={ROUTES.OUTFIT_DETAILS} element={<OutfitDetails />} />
             <Route path={ROUTES.STYLE_EDITOR} element={<StyleEditor />} />
             <Route path={ROUTES.DESIGN_PREVIEW} element={<DesignScanner />} />
+            <Route path={ROUTES.AI_ENHANCER} element={<AIEnhancer />} />
             <Route
               path={ROUTES.DESIGN_VARIATIONS}
               element={<DesignVariations />}
