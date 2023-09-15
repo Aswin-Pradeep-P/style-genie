@@ -17,7 +17,7 @@ const profileApis = baseApi.injectEndpoints({
     }),
     getOutfitDetails: builder.mutation({
       query: (payload) => ({
-        url: `/api/default-options?id=${payload.id}`,
+        url: `/api/outfit?id=${payload.id}`,
         method: RequestTypes.GET
       })
     }),

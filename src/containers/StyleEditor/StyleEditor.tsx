@@ -121,7 +121,7 @@ const StyleEditor = () => {
 
   const handleCustomization = (type: NeckTypes) => {
     getCustomization({
-      id: "6503e8fde40d7addb33a5c80",
+      id: "6503e8fde40d7addb33a5c7f",
       neckline: type,
     });
   };
@@ -139,7 +139,22 @@ const StyleEditor = () => {
       <Header />
       <div className=" bg-white flex flex-col    items-center pb-4 px-4 ">
         <div className="text-xl mt-4 mb-2 italic ">Elevate Your Elegance</div>
-        <div className=" flex justify-between items-center bg-[#1F363D] rounded-md text-center text-lg font-semibold text-white border p-3 w-full ">
+
+        {isCustomizationLoading ? (
+          <div className=" flex flex-col items-center border-[#40798C] border- justify-center h-[350px] mb-2 w-full bg-white ">
+            <div className="text-[#40798C] font-semibold mb-12">
+              Hold Tight, Style's Brewing: AI at Work!!
+            </div>
+            <div className="dot-spin"></div>
+          </div>
+        ) : (
+          <img
+            src={currentImgSrc || "/assets/images/ModalImage.svg"}
+            alt="outfit"
+            className="w-full ml-3 my-6  h-[350px]  object-cover "
+          />
+        )}
+        <div className=" flex justify-between mb-6 items-center bg-[#40798C] rounded-md text-center text-lg font-semibold text-white border p-3 w-full ">
           <button
             onClick={handlePrev}
             disabled={editorToolIndex <= 0 || isCustomizationLoading}
@@ -157,20 +172,6 @@ const StyleEditor = () => {
             <ChevronRight />
           </button>
         </div>
-        {isCustomizationLoading ? (
-          <div className=" flex flex-col items-center border-[#40798C] border- justify-center h-[350px] mb-2 w-full bg-white ">
-            <div className="text-[#40798C] font-semibold mb-12">
-              Hold Tight, Style's Brewing: AI at Work!!
-            </div>
-            <div className="dot-spin"></div>
-          </div>
-        ) : (
-          <img
-            src={currentImgSrc || "/assets/images/ModalImage.svg"}
-            alt="outfit"
-            className="w-full ml-3 my-6  h-[350px]  object-cover "
-          />
-        )}
 
         <div className="flex  w-full justify-center gap-4 mb-10">
           {editorTools[editorToolIndex].options.map((option, i) => (

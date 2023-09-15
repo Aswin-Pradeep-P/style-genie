@@ -23,7 +23,7 @@ const OutfitDetails = () => {
   };
 
   useEffect(() => {
-    getOutfitDetails({ id: "6503e8fde40d7addb33a5c80" });
+    getOutfitDetails({ id: "6503e8fde40d7addb33a5c7f" });
   }, []);
 
   if (isLoading) return <Loader />;
