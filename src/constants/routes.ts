@@ -15,6 +15,7 @@ export enum ROUTES {
   MEASUREMENT = '/measurement',
   OUTFIT_DETAILS = '/outfit-details/:id',
   AI_ENHANCER = '/ai-enhancer',
+  CHECKOUT = '/checkout',
   STYLE_EDITOR='/style-editor',
   MEASUREMENT_DETAILS = '/measurement-details',
   DESIGN_PREVIEW = '/designer-home/design-preview',
