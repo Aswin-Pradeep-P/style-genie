@@ -1,25 +1,13 @@
 import {
-  BanknotesIcon,
   UserIcon,
   ChartBarIcon,
 } from "@heroicons/react/24/solid";
 
 export const statisticsCardsData = [
   {
-    color: "blue",
-    icon: BanknotesIcon,
-    title: "Today's Money",
-    value: "₹10,000",
-    footer: {
-      color: "text-green-500",
-      value: "+55%",
-      label: "than last week",
-    },
-  },
-  {
     color: "pink",
     icon: UserIcon,
-    title: "Today's Users",
+    title: "Today's Orders",
     value: "20",
     footer: {
       color: "text-green-500",

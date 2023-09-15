@@ -61,7 +61,7 @@ export function DesignVariations() {
         )}
         {!isPulsing && (
           <>
-            <Carousel className="rounded-xl h-[411px] overflow-hidden">
+            <Carousel className="rounded-xl h-[300px] overflow-hidden">
               <div className="relative inline-block">
                 <span className="absolute top-2 left-2 bg-white px-3 p-1 rounded-full font-bold">
                   1
@@ -193,12 +193,14 @@ export function DesignVariations() {
                   <Radio name="type" label="2" ripple={false} />
                   <Radio name="type" label="3" ripple={false} />
                   <Radio name="type" label="4" ripple={false} />
-                  <Radio name="type" label="5" ripple={false} />
-                  <Radio name="type" label="6" ripple={false} />
                 </div>
                 <div className="flex gap-1 text-sm">
+                  <Radio name="type" label="5" ripple={false} />
+                  <Radio name="type" label="6" ripple={false} />
                   <Radio name="type" label="7" ripple={false} />
                   <Radio name="type" label="8" ripple={false} />
+                </div>
+                <div className="flex gap-1 text-sm">
                   <Radio name="type" label="9" ripple={false} />
                   <Radio name="type" label="10" ripple={false} />
                   <Radio name="type" label="11" ripple={false} />

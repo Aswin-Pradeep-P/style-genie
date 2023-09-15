@@ -71,7 +71,7 @@ const DesignScanner = () => {
         )}
         {!isPulsing && (
           <>
-            <img src={DressExtracted} alt="Dress" className="h-[411px]" />
+            <img src={DressExtracted} alt="Dress" className="h-[300px]" />
             <Typewriter text="Choose the required combinations" />
             <NeckList />
             <ColorPicker />

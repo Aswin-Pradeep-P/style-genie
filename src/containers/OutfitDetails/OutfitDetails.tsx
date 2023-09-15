@@ -1,5 +1,6 @@
 import Header from "@Components/Header/Header";
 import { Loader } from "@Components/index";
+import { ROUTES } from "@Constants/routes";
 import { useGetOutfitDetailsMutation } from "@Containers/Home/apiSlice";
 
 import { useEffect } from "react";
@@ -73,7 +74,7 @@ const OutfitDetails = () => {
           >
             Style Enhancer
           </button>
-          <button className="   py-3 px-12  bg-[#1F363D] text-white rounded-md">
+          <button className="   py-3 px-12  bg-[#1F363D] text-white rounded-md" onClick={() => navigate(ROUTES.CHECKOUT)}>
             Checkout
           </button>
         </div>

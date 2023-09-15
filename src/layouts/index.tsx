@@ -27,6 +27,7 @@ import DesignScanner from "@Containers/Designer/design-scanner";
 import { DesignerContextProvider } from "@Containers/Designer/designer-context";
 import { DesignVariations } from "@Containers/Designer/design-variations";
 import DesignPrompt from "@Containers/Designer/design-prompt";
+import Checkout from "@Containers/Checkout";
 
 export const Layout = () => {
   const appBarRef = useRef(null);
@@ -87,6 +88,7 @@ export const Layout = () => {
             <Route path={ROUTES.STYLE_EDITOR} element={<StyleEditor />} />
             <Route path={ROUTES.DESIGN_PREVIEW} element={<DesignScanner />} />
             <Route path={ROUTES.AI_ENHANCER} element={<AIEnhancer />} />
+            <Route path={ROUTES.CHECKOUT} element={<Checkout />} />
             <Route
               path={ROUTES.DESIGN_VARIATIONS}
               element={<DesignVariations />}

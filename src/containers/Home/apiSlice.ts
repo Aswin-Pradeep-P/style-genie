@@ -9,6 +9,12 @@ const profileApis = baseApi.injectEndpoints({
         method: RequestTypes.GET
       })
     }),
+    getMaterials: builder.mutation({
+      query: (payload) => ({
+        url: `/api/materials?${payload.id}`,
+        method: RequestTypes.GET
+      })
+    }),
     getCategoryItems: builder.mutation({
       query: (payload) => ({
         url: `/api/outfit?category=${payload.type}`,
@@ -57,4 +63,4 @@ const profileApis = baseApi.injectEndpoints({
 });
 
 
-export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation, useLoginMutation, useGetProfileMutation, useGetMeasurementsMutation, useGenerateOutfitsMutation  } = profileApis;
+export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation, useLoginMutation, useGetProfileMutation, useGetMeasurementsMutation, useGetMaterialsMutation ,useGenerateOutfitsMutation} = profileApis;
