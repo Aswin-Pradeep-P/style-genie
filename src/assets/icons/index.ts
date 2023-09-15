@@ -9,4 +9,23 @@ import { ReactComponent as HomeIcon } from './HomeIcon.svg';
 import { ReactComponent as Explore } from './Explore.svg';
 import { ReactComponent as Profile } from './Profile.svg';
 
-export { ErrorIcon, ErrorCloseIcon, TickCircleIcon, CloseButton, CloseIcon, Category, HomeIcon, Explore, Profile };
+import { ReactComponent as LoginStep1 } from './LoginStep1.svg';
+import { ReactComponent as LoginStep2 } from './LoginStep2.svg';
+import { ReactComponent as LoginStep3 } from './LoginStep3.svg';
+import { ReactComponent as ArrowForward } from './arrow-forward.svg';
+
+export {
+  ErrorIcon,
+  ErrorCloseIcon,
+  TickCircleIcon,
+  CloseButton,
+  CloseIcon,
+  Category,
+  HomeIcon,
+  Explore,
+  Profile,
+  LoginStep1,
+  LoginStep2,
+  LoginStep3,
+  ArrowForward
+};

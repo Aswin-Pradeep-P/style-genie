@@ -11,7 +11,8 @@ import FAQPage from '@Containers/FAQPage';
 import CategoryPage from '@Containers/Category';
 import ProfilePage from '@Containers/Profile';
 import ExplorePage from '@Containers/Explore';
-import DesignerHome from '@Containers/DesignerHome';
+import DesignerSignup from '@Containers/Designer/designer-signup';
+import DesignerDashboard from '@Containers/Designer/designer-dashboard';
 
 import { ProtectedRoute } from './ProtectedRoute';
 import styles from './styles';
@@ -44,7 +45,8 @@ export const Layout = () => {
           {/* Protected routes */}
           <Route path={ROUTES.FAQS} element={<ProtectedRoute Component={FAQPage} />} />
           <Route path={ROUTES.ALL} element={<NotFound />} />
-          <Route path={ROUTES.DESIGNER_HOME} element={<DesignerHome />} />
+          <Route path={ROUTES.DESIGNER_SIGNUP} element={<DesignerSignup />} />
+          <Route path={ROUTES.DESIGNER_DASHBOARD} element={<DesignerDashboard />} />
           <Route path={ROUTES.CAPTURE_IMAGE} element={<ImageCapture />} />
         </Routes>
       </div>
