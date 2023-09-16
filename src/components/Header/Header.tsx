@@ -1,8 +1,11 @@
 import { UserIcon } from "@assets/icons";
 import Logo from "@assets/icons/StyleGenieLogo.png";
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useNavigate } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import NotificationsIcon from "@mui/icons-material/Notifications"
+import styles from "./styles";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -17,7 +20,15 @@ const Header = () => {
         </button>
         <img src={Logo} alt="StyleGenie" className="h-[50px] mx-4" />
       </div>
-      <UserIcon className="bg-[#40798C] rounded-full text-blue-2 mx-4" />
+      <div>
+      <IconButton sx={styles.iconButton} disableRipple>
+            <NotificationsIcon style={{ color: "#40798C" }} />
+          </IconButton>
+          <IconButton sx={styles.iconButton} disableRipple>
+            <ShoppingCartIcon style={{ color: "#40798C" }} />
+          </IconButton>
+      </div>
+     
     </header>
   );
 };
