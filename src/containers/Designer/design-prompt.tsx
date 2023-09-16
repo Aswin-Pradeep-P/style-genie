@@ -19,6 +19,9 @@ const DesignPrompt = () => {
   const generateOutfitImages = () => {
     generateOutfits({ prompt });
   };
+  const handleDownload = (url) => {
+    window.open(url, "_blank");
+  };
 
   useEffect(() => {
     if (isPulsing) {
@@ -57,7 +60,7 @@ const DesignPrompt = () => {
         {generatedOutfits?.images &&
           generatedOutfits?.images?.map((outfit, index) => (
             <div key={index} className="relative">
-              <button>
+              <button onClick={() => handleDownload(outfit?.image_url)}>
                 <DownloadIcon className="absolute top-12 text-white w-5 right-2 bg-black bg-opacity-90 border border-white z-20" />
               </button>
               <img
