@@ -15,14 +15,16 @@ import {
   Progress,
 } from '@material-tailwind/react';
 import { ClockIcon, CheckIcon, EllipsisVerticalIcon, ArrowUpIcon } from '@heroicons/react/24/outline';
-import { StatisticsCard } from './widgets/cards/statistics-card';
-import { StatisticsChart } from './widgets/charts/statistics-chart';
+
 import { statisticsCardsData, statisticsChartsData, projectsTableData, ordersOverviewData } from './data';
 import { Button, Paper } from '@mui/material';
 import { useGetHomePageMutation, useGetProfileMutation } from '@Containers/Home/apiSlice';
 import LocalStorage from '@Utils/storage';
 import { generatePatternsImages } from '@Utils/s3Service';
 import Loader from '@Components/Loader';
+import { StatisticsCard } from "./widgets/cards/statistics-card";
+import { StatisticsChart } from "./widgets/charts/statistics-chart";
+
 
 export const Dashboard = ({ activeTab }: { activeTab: number }) => {
   return (

@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetCategoryItemsMutation,
   useGetHomePageMutation,
+  useSearchMutation,
 } from "@Containers/Home/apiSlice";
 import { useEffect, useState } from "react";
 import { isNonEmptyString } from "@Utils/checks";
@@ -62,6 +63,7 @@ const FAQPage = () => {
   const [getProducts, { data: productsData, isLoading: isProductsLoading }] =
     useGetCategoryItemsMutation();
   const [getAllProducts, { data }] = useGetHomePageMutation();
+  const [getSearchResults, { data: searchData, isLoading: isSearchLoading }] =  useSearchMutation();
 
   useEffect(() => {
     if (type && isNonEmptyString(type)) {
@@ -72,14 +74,13 @@ const FAQPage = () => {
   }, [type]);
 
   useEffect(() => {
-    if (search) {
-      // search
+    if (search && isNonEmptyString(search)) {
+      getSearchResults({search})
     }
   }, [search]);
 
   useEffect(() => {
     if (data?.out?.length > 0) {
-      debugger;
       setProducts(data?.out);
     }
   }, [data]);
@@ -89,13 +90,17 @@ const FAQPage = () => {
       setProducts(productsData?.out);
     }
   }, [productsData]);
-  console.log("products ", products);
+  useEffect(() => {
+  if (searchData?.out?.length > 0) {
+    setProducts(searchData?.out);
+  }
+}, [searchData]);
 
   const navigate = useNavigate();
   const handleOutfitOnClick = (id: string) => {
     navigate(`/outfit-details/${id}`, { state: { outfitId: id } });
   };
-  if (isProductsLoading) return <Loader />;
+  if (isProductsLoading || isSearchLoading) return <Loader />;
   return (
     <Box sx={[styles.root]}>
       <AppBar />

@@ -6,7 +6,8 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: '100%',
-    backgroundColor: colors.WHITE
+    backgroundColor: colors.WHITE,
+    overflow: 'hidden'
   },
   footerWrapper: {
     display: 'flex',

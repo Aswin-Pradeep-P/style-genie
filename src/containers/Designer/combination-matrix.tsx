@@ -93,11 +93,6 @@ export function ColorPicker() {
       <div className="flex px-5 py-5">
         <Checkbox
           name="type"
-          label={<ColorIcon color="#0e5547" />}
-          ripple={true}
-        />
-        <Checkbox
-          name="type"
           label={<ColorIcon color="#225e29" />}
           ripple={true}
         />
