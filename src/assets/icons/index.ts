@@ -5,6 +5,7 @@ import { ReactComponent as TickCircleIcon } from "./TickCircle.svg";
 import { ReactComponent as CloseIcon } from "./Close.svg";
 import { ReactComponent as ChevronRight } from "./ChevronRight.svg";
 import { ReactComponent as ChevronLeft } from "./ChevronLeft.svg";
+import { ReactComponent as DownloadButton } from "./DownloadButton.svg";
 
 import { ReactComponent as Category } from "./Category.svg";
 import { ReactComponent as CategoryActive } from "./CategoryActive.svg";
@@ -66,4 +67,5 @@ export {
   UserIcon,
   DesignStudioIcon,
   StarIcon,
+  DownloadButton
 };
