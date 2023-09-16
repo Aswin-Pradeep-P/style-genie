@@ -59,15 +59,14 @@ const profileApis = baseApi.injectEndpoints({
         body: payload
       })
     }),
-    search: builder.mutation({
+    getSearchResults: builder.mutation({
       query: (payload) => ({
-        url: '/api/designer/generate-from-text',
-        method: RequestTypes.GET,
-        body: payload
+        url: `/api/outfit/search/${payload.term}`,
+        method: RequestTypes.GET
       })
     }),
   }),
 });
 
 
-export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation, useLoginMutation, useGetProfileMutation, useGetMeasurementsMutation, useGetMaterialsMutation ,useGenerateOutfitsMutation, useSearchMutation} = profileApis;
+export const { useGetHomePageMutation, useGetCategoryItemsMutation, useGetOutfitDetailsMutation, useGetCustomizeMutation, useLoginMutation, useGetProfileMutation, useGetMeasurementsMutation, useGetMaterialsMutation ,useGenerateOutfitsMutation, useGetSearchResultsMutation} = profileApis;

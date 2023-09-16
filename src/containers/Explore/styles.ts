@@ -18,8 +18,8 @@ const styles = {
     marginLeft: '5px'
   },
   image: {
-    height: '290px',
-    width: '195px',
+    height: '220px',
+    width: '190px',
     borderTopLeftRadius: '5px',
     borderTopRightRadius: '5px'
   }

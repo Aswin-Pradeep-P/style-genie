@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetCategoryItemsMutation,
   useGetHomePageMutation,
-  useSearchMutation,
+  useGetSearchResultsMutation,
 } from "@Containers/Home/apiSlice";
 import { useEffect, useState } from "react";
 import { isNonEmptyString } from "@Utils/checks";
@@ -63,19 +63,24 @@ const FAQPage = () => {
   const [getProducts, { data: productsData, isLoading: isProductsLoading }] =
     useGetCategoryItemsMutation();
   const [getAllProducts, { data }] = useGetHomePageMutation();
-  const [getSearchResults, { data: searchData, isLoading: isSearchLoading }] =  useSearchMutation();
+  const [getSearchResults, { data: searchData, isLoading: isSearchLoading }] =  useGetSearchResultsMutation();
 
   useEffect(() => {
     if (type && isNonEmptyString(type)) {
       getProducts({ type });
-    } else {
+    } else if (!search) {
       getAllProducts({});
     }
-  }, [type]);
+  }, [type, search]);
 
-  useEffect(() => {
+  // console.log('type ', type);
+  // console.log('search ', search);
+
+  useEffect(() => { 
+    console.log('search ', search);
     if (search && isNonEmptyString(search)) {
-      getSearchResults({search})
+      console.log('inside if ');
+      getSearchResults({term: search})
     }
   }, [search]);
 

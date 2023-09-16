@@ -201,7 +201,7 @@ const FAQPage = () => {
 
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter') {
-      navigate(`/explore/${searchTerm}`)
+      navigate(`/explore_s/${searchTerm}`)
     }
   };
 
@@ -253,6 +253,7 @@ const FAQPage = () => {
         <div style={{ marginTop: "100px" }} />
         {renderCarousel()}
         {renderTopBanners(1, "jpg")}
+        <div style={{ fontSize: '16px', fontWeight: 600, textAlign: 'center', marginTop: '20px'}}>Trending Products</div>
         {renderCards()}
         {renderTopBanners(2, "jpg")}
         <Box
