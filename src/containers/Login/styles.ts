@@ -6,7 +6,7 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: '100%',
-    backgroundColor: colors.DIM_GRAY
+    backGroundColor: colors.DIM_GRAY
   }
 };
 

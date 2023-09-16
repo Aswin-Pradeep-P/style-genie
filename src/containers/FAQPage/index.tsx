@@ -7,13 +7,26 @@ import useWindowDimensions from '@Utils/useWindowDimensions';
 import { useState, CSSProperties, useEffect } from 'react';
 import BottomSheet from '@Components/BottomSheet';
 import { CloseButton } from '@assets/icons';
-import { useGetProfileMutation } from './apliSlice';
+import { useGetProfileTestMutation } from './apliSlice';
 import Footer from '@Components/Footer';
 
 const imageData = [
-  'https://assets.style-genie.asia/wp-content/uploads/2023/09/11175735/NM-PRC-92-STR-23-SEP-317-LTPINK-1.webp',
-  'https://assets.style-genie.asia/wp-content/uploads/2023/09/04091311/NM-PRC-83-DRS-23-SEP-2393-WHITE-1.webp',
-  'https://assets.style-genie.asia/wp-content/uploads/2023/09/10144826/NM-PRC-43-SKT-23-SEP-178-BLACK-3.webp'
+  'https://i.pinimg.com/564x/76/eb/9f/76eb9ff45025b7b7e054f67d8a7fd947.jpg',
+  'https://i.pinimg.com/564x/c8/26/d0/c826d05f91f2f1c682ca62504dc86be7.jpg',
+  'https://i.pinimg.com/564x/88/5d/26/885d26e11277f28340f8511081dd4ffd.jpg',
+  'https://i.pinimg.com/474x/eb/45/4a/eb454a065e558b7aeebc0c756d7dc4ee.jpg',
+  'https://i.pinimg.com/564x/76/eb/9f/76eb9ff45025b7b7e054f67d8a7fd947.jpg',
+  'https://i.pinimg.com/564x/c8/26/d0/c826d05f91f2f1c682ca62504dc86be7.jpg',
+  'https://i.pinimg.com/564x/88/5d/26/885d26e11277f28340f8511081dd4ffd.jpg',
+  'https://i.pinimg.com/474x/eb/45/4a/eb454a065e558b7aeebc0c756d7dc4ee.jpg',
+  'https://i.pinimg.com/564x/76/eb/9f/76eb9ff45025b7b7e054f67d8a7fd947.jpg',
+  'https://i.pinimg.com/564x/c8/26/d0/c826d05f91f2f1c682ca62504dc86be7.jpg',
+  'https://i.pinimg.com/564x/88/5d/26/885d26e11277f28340f8511081dd4ffd.jpg',
+  'https://i.pinimg.com/474x/eb/45/4a/eb454a065e558b7aeebc0c756d7dc4ee.jpg',
+  'https://i.pinimg.com/564x/76/eb/9f/76eb9ff45025b7b7e054f67d8a7fd947.jpg',
+  'https://i.pinimg.com/564x/c8/26/d0/c826d05f91f2f1c682ca62504dc86be7.jpg',
+  'https://i.pinimg.com/564x/88/5d/26/885d26e11277f28340f8511081dd4ffd.jpg',
+  'https://i.pinimg.com/474x/eb/45/4a/eb454a065e558b7aeebc0c756d7dc4ee.jpg',
 ];
 
 const Home = () => {
@@ -27,7 +40,7 @@ const Home = () => {
   const { isMobileView } = useWindowDimensions();
   const [openDrawer, setOpenDrawer] = useState(false);
 
-  const [getProfile] = useGetProfileMutation();
+  const [getProfile] = useGetProfileTestMutation();
 
   useEffect(() => {
     getProfile({});

@@ -12,6 +12,16 @@ const styles = {
     display: 'flex',
     bottom: 0,
     position: 'sticky'
+  },
+  productCard: {
+    position: 'relative',
+    marginLeft: '5px'
+  },
+  image: {
+    height: '220px',
+    width: '190px',
+    borderTopLeftRadius: '5px',
+    borderTopRightRadius: '5px'
   }
 };
 
