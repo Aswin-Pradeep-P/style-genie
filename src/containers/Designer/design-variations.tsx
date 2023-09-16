@@ -26,6 +26,7 @@ import VneckPurple from "./vneck-purple.png";
 import { ROUTES } from "@Constants/routes";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Loader from "@Components/Loader";
 
 export function DesignVariations() {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ export function DesignVariations() {
         />
         {isPulsing && (
           <div className="h-full flex items-center justify-center">
-            <Spinner className="h-12 w-12" />
+            <Loader />
           </div>
         )}
         {!isPulsing && (
