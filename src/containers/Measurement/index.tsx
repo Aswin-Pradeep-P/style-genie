@@ -83,7 +83,7 @@ const Measurement = () => {
           zIndex: 1,
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%'}} onClick={() =>{
+        <div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%'}} onClick={() =>{
            setOverlay(false);
            inputRef.current.click();
            }}>
