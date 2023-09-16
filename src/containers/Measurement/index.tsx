@@ -17,7 +17,7 @@ enum BodyParts {
   Stomach = 'Stomach',
   Hip = 'Hip',
   Thighs = 'Thighs',
-  Knee = 'Knee',
+  InseamLength = 'Inseam Length',
 }
 enum SelectedStep {
   FRONT_VIEW = 'Front View',
@@ -37,7 +37,7 @@ const Measurement = () => {
     [BodyParts.Stomach]: '',
     [BodyParts.Hip]: '',
     [BodyParts.Thighs]: '',
-    [BodyParts.Knee]: ''
+    [BodyParts.InseamLength]: ''
   });
   const [overlay, setOverlay] = useState(false);
   const [height, setHeight] = useState();
@@ -115,7 +115,8 @@ const Measurement = () => {
   const mapper = {
     chestSize: [BodyParts.Chest],
     shoulder: [BodyParts.Shoulder],
-    hipSize: [BodyParts.Hip]
+    hipSize: [BodyParts.Hip],
+    inseamLength: [BodyParts.InseamLength]
   }
 
   const setDimensionFromApi= (res: any) => {
@@ -176,19 +177,19 @@ const Measurement = () => {
       <AppBar />
       <div>Measurement</div>
       {overlay && getOverlay()}
-      <div style={{ position: 'absolute', top: 231, left: 80 }}>
+     
+      {isLoading && <Loader />}
+      <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', background: 'white' }}>
+      <div style={{ position: 'absolute', top: -10, left: 20 }}>
       <TextField
             onChange={handleHeightChange}
             variant="standard"
             size="small"
-            style={{ width: 300 }}
+            style={{ width: 350 }}
             label={'Enter your height(cm) to get accurate results'}
             value={height}
           />
       </div>
-     
-      {isLoading && <Loader />}
-      <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', background: 'white' }}>
         <div style={{ position: 'absolute', top: 71, left: 96 }}>
           <TextField
             onChange={(e) => handleChange(e, BodyParts.Shoulder)}
@@ -200,7 +201,7 @@ const Measurement = () => {
             focused={dimensions[BodyParts.Shoulder]}
           />
         </div>
-        <div style={{ position: 'absolute', top: 45, left: 255 }}>
+        {/* <div style={{ position: 'absolute', top: 45, left: 255 }}>
           <TextField
             onChange={(e) => handleChange(e, BodyParts.Neck)}
             variant="standard"
@@ -210,7 +211,7 @@ const Measurement = () => {
             value={dimensions[BodyParts.Neck]}
             focused={dimensions[BodyParts.Neck]}
           />
-        </div>
+        </div> */}
         <div style={{ position: 'absolute', top: 115, left: 133 }}>
           <TextField
             onChange={(e) => handleChange(e, BodyParts.Chest)}
@@ -222,7 +223,7 @@ const Measurement = () => {
             focused={dimensions[BodyParts.Chest]}
           />
         </div>
-        <div style={{ position: 'absolute', top: 160, left: 291 }}>
+        {/* <div style={{ position: 'absolute', top: 160, left: 291 }}>
           <TextField
             onChange={(e) => handleChange(e, BodyParts.Sleeves)}
             variant="standard"
@@ -232,8 +233,8 @@ const Measurement = () => {
             value={dimensions[BodyParts.Sleeves]}
             focused={dimensions[BodyParts.Sleeves]}
           />
-        </div>
-        <div style={{ position: 'absolute', top: 169, left: 118 }}>
+        </div> */}
+        {/* <div style={{ position: 'absolute', top: 169, left: 118 }}>
           <TextField
             onChange={(e) => handleChange(e, BodyParts.Stomach)}
             variant="standard"
@@ -243,7 +244,7 @@ const Measurement = () => {
             value={dimensions[BodyParts.Stomach]}
             focused={dimensions[BodyParts.Stomach]}
           />
-        </div>
+        </div> */}
         <div style={{ position: 'absolute', top: 213, left: 113 }}>
           <TextField
             onChange={(e) => handleChange(e, BodyParts.Hip)}
@@ -255,7 +256,7 @@ const Measurement = () => {
             focused={dimensions[BodyParts.Hip]}
           />
         </div>
-        <div style={{ position: 'absolute', top: 271, left: 110 }}>
+        {/* <div style={{ position: 'absolute', top: 271, left: 110 }}>
           <TextField
             onChange={(e) => handleChange(e, BodyParts.Thighs)}
             variant="standard"
@@ -265,16 +266,16 @@ const Measurement = () => {
             value={dimensions[BodyParts.Thighs]}
             focused={dimensions[BodyParts.Thighs]}
           />
-        </div>
+        </div> */}
         <div style={{ position: 'absolute', top: 318, left: 109 }}>
           <TextField
-            onChange={(e) => handleChange(e, BodyParts.Knee)}
+            onChange={(e) => handleChange(e, BodyParts.InseamLength)}
             variant="standard"
             size="small"
-            style={{ width: 70 }}
-            label={BodyParts.Knee}
-            value={dimensions[BodyParts.Knee]}
-            focused={dimensions[BodyParts.Knee]}
+            style={{ width: 120 }}
+            label={BodyParts.InseamLength}
+            value={dimensions[BodyParts.InseamLength]}
+            focused={dimensions[BodyParts.InseamLength]}
           />
         </div>
         <img style={{ height: 530 }} src="/assets/icons/blueprint.svg" alt="blueprint" />
