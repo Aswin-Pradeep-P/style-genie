@@ -87,5 +87,36 @@ export const uploadImageFile = async (file: any,height: number, onSuccess: Funct
     });
   }
 
+  export const generatePatternsImages = async (file: any, onSuccess: Function, onError: Function) => {
+    const s3 = new AWS.S3();  
+
+    const timestamp = new Date().valueOf();
+    
+    const params = {
+        Bucket: 'style-genie',
+        Key: `sample-images/${timestamp}`, // Specify the desired file name
+        ACL:'public-read',
+        Body: file
+      };
+    
+      s3.putObject(params, (err, data) => {
+        if (err) {
+          console.error('Error uploading to S3:', err);
+        } else {
+                axios.post("https://b481-103-181-238-106.ngrok-free.app/api/variations"
+            ,{
+                "image_url": `https://style-genie.s3.ap-south-1.amazonaws.com/sample-images/${timestamp}`,
+            })
+              .then((response) => {
+                console.log(response);
+                onSuccess(response, `https://style-genie.s3.ap-south-1.amazonaws.com/sample-images/${timestamp}`);
+                // onSuccess(response)
+              }).catch(() => {
+                onError();
+              });
+        }
+      });
+    }
+
 
 
